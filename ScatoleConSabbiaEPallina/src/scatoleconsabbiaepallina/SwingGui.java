@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -21,6 +24,9 @@ public class SwingGui {
     private DatiCondivisi ptrDati;
     
     private JFrame frame;
+    private final int VAL_MIN=0;
+    private final int VAL_MAX=0;
+    private final int VAL_INIT=0;
 
     public SwingGui(DatiCondivisi ptrDati) {
         this.ptrDati = ptrDati;
@@ -30,22 +36,13 @@ public class SwingGui {
         JPanel controls = new JPanel();  //aggiunge un pannello su cui aggiungere bottoni
         controls.setLayout(new FlowLayout());
 
-        JButton incBtn = new JButton("Aumenta"); //bottone per aumentare l'inclinazione
-        incBtn.addActionListener(new ActionListener() {
-
+        JSlider inclinazione = new JSlider(JSlider.HORIZONTAL,VAL_MIN, VAL_MAX, VAL_INIT);  //slider che regola l'inclinazione delle scatole
+        inclinazione.addChangeListener(new ChangeListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                ptrDati.aumentaInc();
-            }
-        });
-        
-        JButton decBtn = new JButton("Decrementa");
-        decBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               ptrDati.decrementaInc();
-            }
+            public void stateChanged(ChangeEvent e) {
+                int valore = (int)inclinazione.getValue();
+                ptrDati.setValoreInc();
+            }         
         });
         
         JButton resetBtn = new JButton("Azzera");
@@ -57,8 +54,7 @@ public class SwingGui {
             }
         });
         
-        controls.add(incBtn);
-        controls.add(decBtn);
+        controls.add(inclinazione);
         controls.add(resetBtn);
         
         frame.add(controls);
