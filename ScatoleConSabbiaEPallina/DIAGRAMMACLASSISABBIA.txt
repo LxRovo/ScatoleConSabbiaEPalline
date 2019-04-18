@@ -1,0 +1,93 @@
+@startuml
+class Scatola
+class Sabbia
+class Pallina
+class Sensore
+class Swing
+class DatiCondivisi
+
+' Attributo contenente il valore dell'altezza di una scatola
+Scatola : altezza
+' Attributo contenente il valore della larghezza di una scatola
+Scatola : larghezza
+' Attributo contenente il valore della lunghezza di una scatola
+Scatola : lunghezza
+' Attributo contenente l'oggetto sabbia presente in una scatola
+Scatola : sabbia
+' Attributo contenente l'oggetto pallina presente in una scatola
+Scatola : pallina
+
+' Metodo per mostrare la sabbia su schermo. Permette di vedere il movimento effettivo della sabbia
+Scatola : visualizzaSabbia()
+' Metodo per mostrare la pallina su schermo. Permette di vedere il movimento effettivo della pallina
+Scatola : visualizzaPallina()
+' Metodo per aggiornare gli attributi di sabbia e pallina in base alla nuova inclinazione
+Scatola : aggiorna( inclinazione )
+' Metodo per modificare le coordinate e la velocità di sabbia e pallina in base all'inclinazione
+Scatola : simulaMovimento ( inclinazione )
+
+' Attributo contenente il valore del volume della sabbia
+Sabbia : volume
+' Attributo contenente il valore della velocità di spostamento della sabbia sull'asse delle x
+Sabbia : velocitàX
+' Attributo contenente il valore della velocità di spostamento della sabbia sull'asse delle y
+Sabbia : velocitàY
+
+
+' Metodo per modificare la velocità di spostamento della sabbia in base all'inclinazione
+Sabbia : aggiornaInformazioni( inclinazione )
+
+' Attributo contenente la posizione sull'asse delle x della pallina
+Pallina : x
+' Attributo contenente la posizione sull'asse delle y della pallina
+Pallina : y
+
+' Attributo contenente il valore della velocità di spostamento della pallina sull'asse delle x
+Pallina : velocitàX
+' Attributo contenente il valore della velocità di spostamento della pallina sull'asse delle y
+Pallina : velocitàY
+
+' Metodo per modificare la velocità di spostamento della pallina in base alla velocità di spostamento sugli assi
+Pallina : aggiornaInformazioni( velocitàX, velocitàY )
+
+'Attributo contenente l'inclinazione del sensore rispetto all'asse delle x
+Sensore : inclinazioneX
+'Attributo contenente l'inclinazione del sensore rispetto all'asse delle y
+Sensore : inclinazioneY
+
+'Metodo che permette di leggere i dati dal giroscopio del dispositivo
+Sensore : leggi()
+'Metodo che permette di aggiornare i dati del sensore in base a quelli letti dal giroscopio
+Sensore : scrivi()
+
+'Attributo che permette di impostare l'inclinazione delle scatole
+Swing : slider
+'Attributo che permette di azzerare l'inclinazione delle scatole e la posizione della sabbia e della pallina
+Swing : bReset
+
+'Metodo che permette di impostare l'inclinazione delle scatole
+Swing : inclina()
+'Metodo che permette di azzerare l'inclinazione delle scatole e la posizione della sabbia e della pallina
+Swing : resetPos()
+
+'Attributo che permette di impostare il numero di scatole presenti
+DatiCondivisi : nScatole
+'Attributo contenente l'inclinazione del sensore rispetto all'asse delle x
+DatiCondivisi : inclinazioneX
+'Attributo contenente l'inclinazione del sensore rispetto all'asse delle y
+DatiCondivisi : inclinazioneY
+
+'Metodo che permette di incrementare l'inclinazione delle scatole
+DatiCondivisi : incrementaInclinaz()
+'Metodo che permette di decrementare l'inclinazione delle scatole
+DatiCondivisi : decrementaInclinaz()
+
+Swing "1" -- "2..*" Scatola : aggiorna inclinazione >
+Sensore "1" -- "2..*" Scatola : aggiorna dati >
+
+Scatola "2..*" o-- "1" Pallina : contiene >
+Scatola "2..*" o-- "1" Sabbia : contiene >
+
+Scatola "2..*" -- "1" DatiCondivisi
+
+@enduml
