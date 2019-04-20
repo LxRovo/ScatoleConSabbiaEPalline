@@ -36,6 +36,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
        //swingGui.show();
     }
 
+    @Override
     public void settings() {
         size(640, 360);
         //dati.setScreen(width, height);
@@ -47,7 +48,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     @Override
     public void setup() {
         noStroke();
-        frameRate(30);
+        frameRate(60);
         ellipseMode(RADIUS);
     }
 
@@ -62,8 +63,12 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         // display all "balls"
         for (int i = 0; i < dati.getNumScatole(); i++) {
-            //display(dati.getScatola(i));
+            Scatola temp =dati.getScatola(i);
+            line(temp.getX(),temp.getY(),temp.getX()+temp.getLarghezza(),temp.getY()+getLunghezza());
+            
         }
+        
+        
     }
 
 }
