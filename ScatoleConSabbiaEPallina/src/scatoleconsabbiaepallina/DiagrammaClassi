@@ -6,6 +6,11 @@ class Sensore
 class Swing
 class DatiCondivisi
 
+
+' Attributo contenente la posizione sull'asse delle x da cui parte una scatola
+Scatola : x
+' Attributo contenente la posizione sull'asse delle y da cui parte una scatola
+Scatola : y
 ' Attributo contenente il valore dell'altezza di una scatola
 Scatola : altezza
 ' Attributo contenente il valore della larghezza di una scatola
@@ -91,5 +96,3 @@ Scatola "2..*" o-- "1" Sabbia : contiene >
 Scatola "2..*" -- "1" DatiCondivisi
 
 @enduml
-
-
