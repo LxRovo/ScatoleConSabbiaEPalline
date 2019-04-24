@@ -22,5 +22,5 @@ public class ThScatola extends Thread{
     
     
     
-    
+   
 }

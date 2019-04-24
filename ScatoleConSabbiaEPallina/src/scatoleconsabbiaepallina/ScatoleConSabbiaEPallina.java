@@ -22,6 +22,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        
+        
         numScatole = 2;
         dati = new DatiCondivisi(numScatole);
         scatole = new ThScatola[numScatole];
