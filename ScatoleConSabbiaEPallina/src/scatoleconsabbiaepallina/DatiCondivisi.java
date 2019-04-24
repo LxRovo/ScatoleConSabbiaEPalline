@@ -74,6 +74,7 @@ public class DatiCondivisi {
 
         this.inclinazioneXPallina = inclinazioneXPallina;
 
+       
     }
     
     
