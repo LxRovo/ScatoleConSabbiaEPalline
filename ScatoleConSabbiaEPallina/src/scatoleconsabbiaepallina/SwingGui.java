@@ -25,7 +25,7 @@ public class SwingGui {
     private DatiCondivisi ptrDati;
     
     private JFrame frame;
-    private final int VAL_MIN=0;
+    private final int VAL_MIN=-90;
     private final int VAL_MAX=90;
     private final int VAL_INIT=0;
 
