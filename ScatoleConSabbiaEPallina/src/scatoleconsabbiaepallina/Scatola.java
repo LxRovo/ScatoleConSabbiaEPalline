@@ -21,7 +21,7 @@ public class Scatola {
 
     
     static Sabbia s;
-    static Pallina p;
+    //static Pallina p;
 
     public Scatola(int x, int y, double larghezza, double altezza,double lunghezza) {
         this.x = x;

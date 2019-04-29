@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -25,14 +26,15 @@ public class SwingGui {
     
     private JFrame frame;
     private final int VAL_MIN=0;
-    private final int VAL_MAX=0;
+    private final int VAL_MAX=90;
     private final int VAL_INIT=0;
 
     public SwingGui(DatiCondivisi ptrDati) {
         this.ptrDati = ptrDati;
         frame = new JFrame("Controlli");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+             JLabel label=new JLabel("valore corrente: 0");
+             
         JPanel controls = new JPanel();  //aggiunge un pannello su cui aggiungere bottoni
         controls.setLayout(new FlowLayout());
 
@@ -41,7 +43,10 @@ public class SwingGui {
             @Override
             public void stateChanged(ChangeEvent e) {
                 int valore = (int)inclinazione.getValue();
-                ptrDati.setValoreInc();
+                System.out.println(valore);
+                label.setText("valore corrente: "+valore);
+                ptrDati.setInclinazioneXScatola(valore);
+              
             }         
         });
         
@@ -50,15 +55,19 @@ public class SwingGui {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               ptrDati.resetInc();
+                inclinazione.setValue(0);
+                label.setText("valore corrente: 0");
+                ptrDati.setInclinazioneXScatola(0);
+             
             }
         });
         
         controls.add(inclinazione);
         controls.add(resetBtn);
+        controls.add(label);
         
         frame.add(controls);
-        frame.setSize(400, 80);
+        frame.setSize(400, 100);
                 
 
     }

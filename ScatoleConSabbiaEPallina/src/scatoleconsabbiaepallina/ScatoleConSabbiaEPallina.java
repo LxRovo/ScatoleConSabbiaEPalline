@@ -22,9 +22,11 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        SwingGui swingGui = new SwingGui(dati);
+        // shows Swing windows
+        swingGui.show();
         
-        
-        numScatole = 2;
+        /*numScatole = 2;
         dati = new DatiCondivisi(numScatole);
         scatole = new ThScatola[numScatole];
         for (int i = 0; i < scatole.length; i++) {
@@ -68,7 +70,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             Scatola temp =dati.getScatola(i);
             line(temp.getX(),temp.getY(),temp.getX()+temp.getLarghezza(),temp.getY()+getLunghezza());
             
-        }
+        }*/
         
         
     }
