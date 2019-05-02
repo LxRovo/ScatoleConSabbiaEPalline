@@ -17,9 +17,9 @@ public class Sabbia extends PApplet  {
     PImage img;
     DatiCondivisi dati;
 
-    public Sabbia(float volume, float accellerazione, float posX, float posY, DatiCondivisi dati) {
+    public Sabbia(float volume, float posX, float posY, DatiCondivisi dati) {
         this.volume = volume;
-        this.accellerazione = accellerazione;
+        this.accellerazione = 0;
         this.posX = posX;
         this.posY = posY;
         img= loadImage("sabbia.jpg");
