@@ -31,6 +31,7 @@ public class Sabbia extends PApplet  {
     {
     image(img, posX, posY);
     }
+      
     
 
     public void aggiornaInfo()
