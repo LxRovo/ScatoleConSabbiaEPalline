@@ -17,6 +17,7 @@ public class DatiCondivisi {
     private float inclinazioneX;
     private final boolean running;
     private Pallina p;
+    
 
     public DatiCondivisi() {
         this.running = true;
@@ -24,6 +25,10 @@ public class DatiCondivisi {
 
     public synchronized void setValoreInc(int v) {
         inclinazioneX = v;
+    }
+    
+    public synchronized Vector<ThScatola> getScatole(){
+        return scatole;
     }
 
     public void resetInc() {
