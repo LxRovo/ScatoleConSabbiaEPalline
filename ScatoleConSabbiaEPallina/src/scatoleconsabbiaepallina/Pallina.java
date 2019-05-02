@@ -24,7 +24,7 @@ public class Pallina {
     }
     
     public void aggiornaInformazioni(){
-        xpos=xpos+(float)(9.8*sin(ptrdati.getInclinazioneXScatola())); 
+        xpos=xpos+(float)(9.8*sin(ptrdati.getInclinazioneX())); 
     }
     
     public float getXpos() {

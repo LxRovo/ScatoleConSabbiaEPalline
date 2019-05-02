@@ -45,7 +45,7 @@ public class SwingGui {
                 int valore = (int)inclinazione.getValue();
                 System.out.println(valore);
                 label.setText("valore corrente: "+valore);
-                ptrDati.setInclinazioneXScatola(valore);
+                ptrDati.setValoreInc(valore);
               
             }         
         });
@@ -57,7 +57,7 @@ public class SwingGui {
             public void actionPerformed(ActionEvent e) {
                 inclinazione.setValue(0);
                 label.setText("valore corrente: 0");
-                ptrDati.setInclinazioneXScatola(0);
+                ptrDati.setValoreInc(0);
              
             }
         });
