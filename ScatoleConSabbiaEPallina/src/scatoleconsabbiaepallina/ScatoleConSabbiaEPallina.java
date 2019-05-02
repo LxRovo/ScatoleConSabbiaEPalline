@@ -39,11 +39,11 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             Sabbia sabbia;
             if (i <= numScatole / 2) {
 
-                sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x, dati);
+                sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x, y, dati);
 
             } else {
 
-                sabbia = new Sabbia(0, x, dati);
+                sabbia = new Sabbia(0, x, y, dati);
 
             }
             ThScatola scatola = new ThScatola(altezza, x + (i * larghezza), y, lunghezza, larghezza, sabbia, dati);
@@ -69,7 +69,9 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void settings() {
 
         size(640, 360);
-
+        for (int i = 0; i < dati.getScatole().size(); i++) {
+            dati.getThScatola(i).start();
+        }
     }
 
     @Override
@@ -109,8 +111,6 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             fill(0, 255, 120);
             line(s.getX(), s.getY() + s.getLunghezza() / 2 - s.getRaggioFinestre(), s.getX(), s.getY() + s.getLunghezza() / 2 + s.getRaggioFinestre());
         }
-
-        Sabbia sabbia = s.getSabbia();
 
         //disegna pallina
         disegnaPallina(s);
