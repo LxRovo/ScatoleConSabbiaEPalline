@@ -14,15 +14,16 @@ import static java.lang.Math.sin;
 public class Pallina {
     private int rag;
     private float xpos;
+    private float ypos;
     private double velx;
     private int xdirection;
     private int widthScreen;
     private int heightScreen;
     private DatiCondivisi ptrdati;
     
-    public Pallina(int rag){
+    public Pallina(int rag,double velx){
         this.rag= rag;
-        velx=4.8;
+        this.velx=velx;
         xpos = 0;
         widthScreen = 0;
         heightScreen = 0;
@@ -35,5 +36,8 @@ public class Pallina {
     
     public float getXpos() {
         return xpos;
+    }
+    public float getYpos() {
+        return ypos;
     }
 }
