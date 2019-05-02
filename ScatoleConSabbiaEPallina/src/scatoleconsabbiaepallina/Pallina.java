@@ -15,22 +15,15 @@ public class Pallina {
     private int rag;
     private float xpos;
     private float ypos;
-    private double velx;
-    private int xdirection;
-    private int widthScreen;
-    private int heightScreen;
     private DatiCondivisi ptrdati;
     
-    public Pallina(int rag,double velx){
+    public Pallina(int rag,float xpos,float ypos){
         this.rag= rag;
-        this.velx=velx;
-        xpos = 0;
-        widthScreen = 0;
-        heightScreen = 0;
-        xdirection=0;
+        this.xpos = xpos;
+        this.ypos=ypos;
     }
     
-    public void aggiornaInformazioni(double vx){
+    public void aggiornaInformazioni(){
         xpos=xpos+(float)(9.8*sin(ptrdati.getInclinazioneXScatola())); 
     }
     
@@ -39,5 +32,8 @@ public class Pallina {
     }
     public float getYpos() {
         return ypos;
+    }
+    public float getRag() {
+        return rag;
     }
 }
