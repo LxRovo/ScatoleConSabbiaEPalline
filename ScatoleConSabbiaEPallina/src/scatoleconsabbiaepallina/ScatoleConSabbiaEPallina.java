@@ -8,6 +8,7 @@ package scatoleconsabbiaepallina;
 import java.util.Random;
 import java.util.Vector;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  *
@@ -25,7 +26,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         // TODO code application logic here
 
         Random r = new Random();
-
+        PImage img;
+        
         numScatole = r.nextInt(3) + 2;
         /*
         *@author rovelli_andrea
@@ -47,7 +49,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         }
         
         
-
+        
         PApplet.main(new String[]{"progetto.Progetto"});
 
         SwingGui swing = new SwingGui(dati);
@@ -60,9 +62,9 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void settings() {
 
         size(640, 360);
-
+        PImage img = loadImage("sabbia.jpg");
     }
-
+    
     @Override
     public void draw() {
         
