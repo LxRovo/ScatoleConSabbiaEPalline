@@ -38,7 +38,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             float altezza = r.nextInt(20) + 30;
             Sabbia sabbia;
             if (i <= numScatole / 2) {
-
+                
                 sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x, y, dati);
 
             } else {
@@ -57,7 +57,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         dati.setScatole(scatole);
 
-        PApplet.main(new String[]{"progetto.Progetto"});
+        PApplet.main(new String[]{"scatoleconsabbiaepallina.ScatoleConSabbiaEPallina"});
 
         SwingGui swing = new SwingGui(dati);
 
