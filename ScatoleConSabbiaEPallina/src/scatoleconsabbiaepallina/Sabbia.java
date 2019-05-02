@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package scatoleconsabbiaepallina;
 
+import processing.core.PImage;
+import java.lang.*;
 /**
  *
  * @author alessandro_purita
@@ -12,45 +10,50 @@ package scatoleconsabbiaepallina;
 public class Sabbia {
     
     private int volume;
-    private int velocitaX;
-    private int velocitaY;
+    private int accellerazione;
+    private int posX;
+    PImage img;
+    DatiCondivisi dati;
 
-    public Sabbia(int volume, int velocitaX, int velocitaY) {
+    public Sabbia(int volume, int posX, DatiCondivisi dati) {
         this.volume = volume;
-        this.velocitaX = velocitaX;
-        this.velocitaY = velocitaY;
+        this.accellerazione = 0;
+        this.posX = posX;
+        img= loadImage("sabbia.jpg");
+        this.dati = dati;
     }
 
-    public int getVolume() {
+    
+
+    
+
+    public int getVolume() 
+    {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(int volume) 
+    {
         this.volume = volume;
     }
-
-    public int getVelocitaX() {
-        return velocitaX;
-    }
-
-    public void setVelocitaX(int velocitaX) {
-        this.velocitaX = velocitaX;
-    }
-
-    public int getVelocitaY() {
-        return velocitaY;
-    }
-
-    public void setVelocitaY(int velocitaY) {
-        this.velocitaY = velocitaY;
-    }
-    public void aggiornaInfo(int inclinazioneX,int inclinazioneY)
+    void draw() 
     {
-        
-    this.velocitaX++;
-    this.velocitaY--;
+    image(img, posX, 0);
+}
     
+
+    public void aggiornaInfo()
+    {
+    double x = Math.toRadians(dati.getInclinazioneXScatola());   
+    accellerazione = (int) (9.8 * Math.sin(x));
+    posX= posX+accellerazione;
+    draw();
+        
     
     
     }
+
+   
+
+
 }
