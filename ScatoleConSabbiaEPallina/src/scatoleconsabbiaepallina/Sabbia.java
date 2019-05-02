@@ -10,44 +10,33 @@ import java.lang.*;
  */
 public class Sabbia extends PApplet  {
     
-    private int volume;
-    private int accellerazione;
-    private int posX;
+    private float volume;
+    private float accellerazione;
+    private float posX;
+    private float posY;
     PImage img;
     DatiCondivisi dati;
 
-    public Sabbia(int volume, int posX, DatiCondivisi dati) {
+    public Sabbia(float volume, float accellerazione, float posX, float posY, DatiCondivisi dati) {
         this.volume = volume;
-        this.accellerazione = 0;
+        this.accellerazione = accellerazione;
         this.posX = posX;
+        this.posY = posY;
         img= loadImage("sabbia.jpg");
         this.dati = dati;
     }
 
-    
-
-    
-
-    public int getVolume() 
-    {
-        return volume;
-    }
-
-    public void setVolume(int volume) 
-    {
-        this.volume = volume;
-    }
     @Override
     public void draw() 
     {
-    image(img, posX, 0);
+    image(img, posX, posY);
     }
     
 
     public void aggiornaInfo()
     {
     double x = Math.toRadians(dati.getInclinazioneX());   
-    accellerazione = (int) (9.8 * Math.sin(x));
+    accellerazione = (float) (9.8 * Math.sin(x));
     posX= posX+accellerazione;
     draw();
         
