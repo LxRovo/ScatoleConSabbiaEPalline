@@ -5,20 +5,23 @@
  */
 package scatoleconsabbiaepallina;
 
+import static java.lang.Math.sin;
+
 /**
  *
  * @author peppe
  */
 public class Pallina {
-    int rag;
-    float xpos;
-    double velx;
-    int xdirection;
-    int widthScreen;
-    int heightScreen;
+    private int rag;
+    private float xpos;
+    private double velx;
+    private int xdirection;
+    private int widthScreen;
+    private int heightScreen;
+    private DatiCondivisi ptrdati;
     
-    Pallina(){
-        rag=20;
+    public Pallina(int rag){
+        this.rag= rag;
         velx=4.8;
         xpos = 0;
         widthScreen = 0;
@@ -27,14 +30,7 @@ public class Pallina {
     }
     
     public void aggiornaInformazioni(double vx){
-      // xdirection = -1;   Right to Left
-        xpos=xpos+(float)(vx*xdirection); 
-    }
-    
-    void setScreen(int width, int height) {
-        widthScreen = width;
-        heightScreen = height;
-        xpos = widthScreen / 2 + (int) (Math.random() * 50);
+        xpos=xpos+(float)(9.8*sin(ptrdati.getInclinazioneXScatola())); 
     }
     
     public float getXpos() {
