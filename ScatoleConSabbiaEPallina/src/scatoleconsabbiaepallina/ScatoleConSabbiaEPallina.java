@@ -8,7 +8,6 @@ package scatoleconsabbiaepallina;
 import java.util.Random;
 import java.util.Vector;
 import processing.core.PApplet;
-import processing.core.PImage;
 
 /**
  *
@@ -26,15 +25,10 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         // TODO code application logic here
 
         Random r = new Random();
-        PImage img;
-        
+
         numScatole = r.nextInt(3) + 2;
-        /*
-        *@author rovelli_andrea
-        *creazione dei thread 
-        */
+
         Vector<ThScatola> scatole = new Vector(numScatole);
- 
         float larghezza = 70;
         float lunghezza = 100;
         float x = 50;
@@ -42,14 +36,27 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         dati = new DatiCondivisi();
         for (int i = 0; i < numScatole; i++) {
             float altezza = r.nextInt(20) + 30;
-            
-            ThScatola s = new ThScatola(altezza, x + (i * larghezza), y, lunghezza, larghezza, dati);
-            scatole.add(i, s);
+            Sabbia sabbia;
+            if (i <= numScatole / 2) {
+
+                sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x, dati);
+
+            } else {
+
+                sabbia = new Sabbia(0, x, dati);
+
+            }
+            ThScatola scatola = new ThScatola(altezza, x + (i * larghezza), y, lunghezza, larghezza, sabbia, dati);
+            scatole.add(i, scatola);
+            if (i == (numScatole / 2)) {
+                Pallina p = new Pallina(10, x + scatola.getLarghezza() / 2, scatola.getY() + scatola.getLunghezza() / 2);
+                dati.setP(p);
+            }
 
         }
-        
-        
-        
+
+        dati.setScatole(scatole);
+
         PApplet.main(new String[]{"progetto.Progetto"});
 
         SwingGui swing = new SwingGui(dati);
@@ -62,12 +69,12 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void settings() {
 
         size(640, 360);
-        PImage img = loadImage("sabbia.jpg");
+
     }
-    
+
     @Override
     public void draw() {
-        
+
         if (!dati.isRunning()) {
             exit();
         }
@@ -83,8 +90,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     }
 
     public void disegnaThScatola(int i) {
-        
-        //disegno delle scatole
+
         ThScatola s = dati.getThScatola(i);
         stroke(0, 0, 0);
         noFill();
@@ -103,11 +109,20 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             fill(0, 255, 120);
             line(s.getX(), s.getY() + s.getLunghezza() / 2 - s.getRaggioFinestre(), s.getX(), s.getY() + s.getLunghezza() / 2 + s.getRaggioFinestre());
         }
-        
+
         Sabbia sabbia = s.getSabbia();
-        
-       
-        
+
+        //disegna pallina
+        disegnaPallina(s);
+    }
+
+    public void disegnaPallina(ThScatola s) {
+
+        noStroke();
+        fill(255, 0, 0);
+        Pallina p = dati.getP();
+        ellipse(p.getXpos(), p.getYpos(), 10, 10);
+
     }
 
 }
