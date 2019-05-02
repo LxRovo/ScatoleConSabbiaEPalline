@@ -2,12 +2,13 @@
 package scatoleconsabbiaepallina;
 
 import processing.core.PImage;
+import processing.core.PApplet;
 import java.lang.*;
 /**
  *
  * @author alessandro_purita
  */
-public class Sabbia {
+public class Sabbia extends PApplet  {
     
     private int volume;
     private int accellerazione;
@@ -36,15 +37,16 @@ public class Sabbia {
     {
         this.volume = volume;
     }
-    void draw() 
+    @Override
+    public void draw() 
     {
     image(img, posX, 0);
-}
+    }
     
 
     public void aggiornaInfo()
     {
-    double x = Math.toRadians(dati.getInclinazioneXScatola());   
+    double x = Math.toRadians(dati.getInclinazioneX());   
     accellerazione = (int) (9.8 * Math.sin(x));
     posX= posX+accellerazione;
     draw();
