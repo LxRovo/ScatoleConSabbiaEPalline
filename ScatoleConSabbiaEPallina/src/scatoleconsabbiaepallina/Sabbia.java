@@ -63,7 +63,7 @@ public float getVolume() {
       
     
 
-    public void aggiornaInfo(float larghezza, float lunghezza)
+    public void aggiornaInfo()
     {
     double x = Math.toRadians(dati.getInclinazioneX());   
     accellerazione = (float) (9.8 * Math.sin(x));
