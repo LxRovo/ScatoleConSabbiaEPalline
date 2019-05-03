@@ -59,14 +59,7 @@ public float getVolume() {
     public void setPosY(float posY) {
         this.posY = posY;
     }
-    public void draw(float larghezza, float lunghezza) 
-    {
     
-    fill(204, 102, 0);
-        
-    rect(posX, posY, larghezza+ posX,lunghezza+ posY);
-    
-    }
       
     
 
@@ -76,7 +69,7 @@ public float getVolume() {
     accellerazione = (float) (9.8 * Math.sin(x));
     posX= posX+accellerazione;
     
-    draw(larghezza,lunghezza);
+    
         
     
     
