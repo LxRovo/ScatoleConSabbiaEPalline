@@ -26,23 +26,24 @@ public class Sabbia extends PApplet  {
         this.dati = dati;
     }
 
-    public void draw(ThScatola s) 
+    public void draw(float larghezza, float lunghezza) 
     {
     
     fill(204, 102, 0);
         
-    rect(posX, posY, s.getLarghezza()+ posX,s.getLunghezza()+ posY);
+    rect(posX, posY, larghezza+ posX,lunghezza+ posY);
     
     }
       
     
 
-    public void aggiornaInfo()
+    public void aggiornaInfo(float larghezza, float lunghezza)
     {
     double x = Math.toRadians(dati.getInclinazioneX());   
     accellerazione = (float) (9.8 * Math.sin(x));
     posX= posX+accellerazione;
-    draw();
+    
+    draw(larghezza,lunghezza);
         
     
     
