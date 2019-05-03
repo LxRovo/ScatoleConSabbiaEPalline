@@ -13,13 +13,16 @@ import java.util.Vector;
  */
 public class DatiCondivisi {
 
-    private Vector<ThScatola> scatole;
-    private float inclinazioneX;
-    private final boolean running;
-    private Pallina p;
+    private Vector<ThScatola> scatole; //Vettore contenente le scatole
+    private float inclinazioneX;//Attributo contenente il valore dell'inclinazione
+    private final boolean running;//Attributo che indica lo stato di funzionamento del programma
+    private Pallina p;//Attributo che contiene la pallina
     
-
-    public DatiCondivisi() {
+    /**
+     * @author Mattia
+     * Costruttore che imposta il valore running a true
+     */
+     public DatiCondivisi() {
         this.running = true;
     }
 
@@ -30,7 +33,11 @@ public class DatiCondivisi {
     public synchronized Vector<ThScatola> getScatole(){
         return scatole;
     }
-
+    
+    /**
+     * @author Mattia
+     * Metodo per impostare a 0 l'inclinazione delle scatole
+     */
     public void resetInc() {
         inclinazioneX = 0;
     }
@@ -38,7 +45,12 @@ public class DatiCondivisi {
     public synchronized float getInclinazioneX() {
         return inclinazioneX;
     }
-
+    
+    /**
+     * @author Mattia
+     * Metodo per controllare lo stato del programma
+     * @return running
+     */
     public boolean isRunning() {
         return running;
     }
