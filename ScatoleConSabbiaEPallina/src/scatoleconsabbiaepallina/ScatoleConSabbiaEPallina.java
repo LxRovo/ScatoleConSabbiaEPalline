@@ -26,7 +26,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         Random r = new Random();
 
-        numScatole = r.nextInt(3) + 2;
+        numScatole = r.nextInt(3)+2;
 
         Vector<ThScatola> scatole = new Vector(numScatole);
         float larghezza = 70;
@@ -38,7 +38,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             float altezza = r.nextInt(20) + 30;
             Sabbia sabbia;
             if (i <= numScatole / 2) {
-                
+
                 sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x, y, dati);
 
             } else {
@@ -111,9 +111,11 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             fill(0, 255, 120);
             line(s.getX(), s.getY() + s.getLunghezza() / 2 - s.getRaggioFinestre(), s.getX(), s.getY() + s.getLunghezza() / 2 + s.getRaggioFinestre());
         }
-
+        
+        disegnaSabbia(s.getLarghezza(),s.getLunghezza(),s.getSabbia());
         //disegna pallina
         disegnaPallina(s);
+        
     }
 
     public void disegnaPallina(ThScatola s) {
@@ -122,6 +124,15 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         fill(255, 0, 0);
         Pallina p = dati.getP();
         ellipse(p.getXpos(), p.getYpos(), 10, 10);
+
+    }
+
+    public void disegnaSabbia(float larghezza, float lunghezza, Sabbia sabbia) {
+        
+        noStroke();
+        fill(204, 102, 0);
+
+        rect(sabbia.getPosX(), sabbia.getPosY(), larghezza, lunghezza);
 
     }
 
