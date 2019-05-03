@@ -111,7 +111,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             fill(0, 255, 120);
             line(s.getX(), s.getY() + s.getLunghezza() / 2 - s.getRaggioFinestre(), s.getX(), s.getY() + s.getLunghezza() / 2 + s.getRaggioFinestre());
         }
-        
+        s.getSabbia().aggiornaInfo();
         disegnaSabbia(s.getLarghezza(),s.getLunghezza(),s.getSabbia());
         //disegna pallina
         disegnaPallina(s);
@@ -131,7 +131,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         
         noStroke();
         fill(204, 102, 0);
-
+        
         rect(sabbia.getPosX(), sabbia.getPosY(), larghezza, lunghezza);
 
     }

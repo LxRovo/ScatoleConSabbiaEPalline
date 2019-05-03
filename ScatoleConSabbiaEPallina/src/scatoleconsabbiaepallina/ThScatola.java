@@ -23,7 +23,7 @@ public class ThScatola extends Thread {
     private final DatiCondivisi ptrDati;
     private final Sabbia sabbia;
 
-    public ThScatola(float altezza, float x, float y, float lunghezza, float larghezza,Sabbia sabbia, DatiCondivisi ptrDati) {
+    public ThScatola(float altezza, float x, float y, float lunghezza, float larghezza, Sabbia sabbia, DatiCondivisi ptrDati) {
         this.altezza = altezza;
         this.lunghezza = lunghezza;
         this.larghezza = larghezza;
@@ -36,13 +36,7 @@ public class ThScatola extends Thread {
 
     @Override
     public void run() {
-
-            sabbia.aggiornaInfo(larghezza,lunghezza);
-        try {
-            Thread.sleep(15);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ThScatola.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
     }
 
     public float getAltezza() {
