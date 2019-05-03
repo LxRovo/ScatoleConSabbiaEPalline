@@ -68,8 +68,16 @@ public float getVolume() {
     double x = Math.toRadians(dati.getInclinazioneX());   
     accellerazione = (float) (9.8 * Math.sin(x));
     posX= posX+accellerazione;
+    if(posX<dati.getMinX())
+    {
+    posX=dati.getMinX();
     
+    }
+    if(posX>dati.getMaxX())
+    {
+    posX=dati.getMaxX();
     
+    }
         
     
     
