@@ -14,6 +14,10 @@ public class Sabbia extends PApplet  {
     private float accellerazione;
     private float posX;
     private float posY;
+
+    
+
+    
    
     DatiCondivisi dati;
 
@@ -25,7 +29,36 @@ public class Sabbia extends PApplet  {
         
         this.dati = dati;
     }
+public float getVolume() {
+        return volume;
+    }
 
+    public float getAccellerazione() {
+        return accellerazione;
+    }
+
+    public float getPosX() {
+        return posX;
+    }
+
+    public float getPosY() {
+        return posY;
+    }
+    public void setVolume(float volume) {
+        this.volume = volume;
+    }
+
+    public void setAccellerazione(float accellerazione) {
+        this.accellerazione = accellerazione;
+    }
+
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(float posY) {
+        this.posY = posY;
+    }
     public void draw(float larghezza, float lunghezza) 
     {
     
