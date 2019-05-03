@@ -14,7 +14,7 @@ public class Sabbia extends PApplet  {
     private float accellerazione;
     private float posX;
     private float posY;
-    PImage img;
+   
     DatiCondivisi dati;
 
     public Sabbia(float volume, float posX, float posY, DatiCondivisi dati) {
@@ -22,15 +22,17 @@ public class Sabbia extends PApplet  {
         this.accellerazione = 0;
         this.posX = posX;
         this.posY = posY;
-        img= loadImage("sabbia.jpg");
-        img.resize(640, 360);
+        
         this.dati = dati;
     }
 
-    @Override
-    public void draw() 
+    public void draw(ThScatola s) 
     {
-    image(img, posX, posY);
+    
+    fill(204, 102, 0);
+        
+    rect(posX, posY, s.getLarghezza()+ posX,s.getLunghezza()+ posY);
+    
     }
       
     
