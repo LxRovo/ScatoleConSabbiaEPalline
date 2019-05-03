@@ -1,0 +1,107 @@
+﻿@startuml
+class ThScatola
+class Sabbia
+class Pallina
+class SwingGui
+class DatiCondivisi
+class ScatoleConSabbiaEPallina
+
+' puntatore alla classe DatiCondivisi
+ScatoleConSabbiaEPallina : dati
+' Attributo che contiene il numero di scatole
+ScatoleConSabbiaEPallina : numScatole
+' Metodo che permette di disegnare la pallina
+ScatoleConSabbiaEPallina : disegnaPallina(s)
+' Metodo che permette di disegnare le scatole
+ScatoleConSabbiaEPallina : disegnaThScatola(i)
+
+' Attributo contenente il valore dell'altezza di una scatola
+ThScatola : altezza
+' Attributo contenente il valore della larghezza di una scatola
+ThScatola : larghezza
+' Attributo contenente il valore della lunghezza di una scatola
+ThScatola : lunghezza
+' Attributo contenente l'oggetto sabbia presente in una scatola
+ThScatola : sabbia
+' Attributo contenente il raggio della finestra
+ThScatola : raggioFinestre
+' Attributo contenente la posizione sull'asse x della scatola
+ThScatola : x
+' Attributo contenente la posizione sull'asse y della scatola
+ThScatola : y
+' Metodo per mostrare la sabbia su schermo. Permette di vedere il movimento effettivo della sabbia
+ThScatola : run()
+
+
+' Vettore contenente le scatole
+DatiCondivisi : scatole
+' Attributo contenente il valore dell'inclinazione
+DatiCondivisi : inclinazioneX
+' Attributo che indica lo stato di funzionamento del programma
+DatiCondivisi : running
+' Attributo che contiene la pallina
+DatiCondivisi : p
+' Metodo per controllare lo stato del programma
+DatiCondivisi : isRunning()
+' Metodo per impostare a 0 l'inclinazione delle scatole
+DatiCondivisi : resetInc()
+
+' Attributo contenente il valore del volume della sabbia
+Sabbia : volume
+' Attributo contenente il valore dell'accellerazione della sabbia
+Sabbia : accellerazione
+' Attributo contenente la posizione sull'asse X della sabbia
+Sabbia : posX
+' Attributo contenente la posizione sull'asse Y della sabbia
+Sabbia : posY   
+' Attributo contenente l'immagine da assegnare alla sabbia
+Sabbia : img
+' puntatore alla classe DatiCondivisi
+Sabbia : dati
+' Metodo per modificare la velocità di spostamento della sabbia
+Sabbia : aggiornaInfo()
+' Metodo disegnare la sabbia sullo schermo
+Sabbia : draw()
+
+' Attributo contenente il raggio della pallina
+Pallina : rag
+' Attributo contenente la posizione sull'asse delle x della pallina
+Pallina : xpos
+' Attributo contenente la posizione sull'asse delle y della pallina
+Pallina : ypos
+' puntatore alla classe DatiCondivisi
+Pallina : ptrDati
+
+' Metodo per modificare la velocità di spostamento della pallina in base alla velocità di spostamento sugli assi
+Pallina : aggiornaInformazioni()
+
+
+
+
+' puntatore alla classe DatiCondivisi
+SwingGui : ptrDati
+' Attributo che permette di visualizzare il frame
+SwingGui : frame
+' Attributo che contiene il valore minimo che può assumere lo slider
+SwingGui : VAL_MIN
+' Attributo che contiene il valore massimo che può assumere lo slider
+SwingGui : VAL_MAX
+' Attributo che contiene il valore che assume lo slider al lancio del programma
+SwingGui : VAL_INIT
+
+'Metodo che rende visibile il frame
+SwingGui : show()
+
+
+SwingGui "1" -- "2..*" ThScatola : aggiorna inclinazione >
+
+ThScatola "2..*" o-- "1" Pallina : contiene >
+ThScatola "2..*" o-- "1" Sabbia : contiene >
+ThScatola "2..*" -- "1" DatiCondivisi
+ScatoleConSabbiaEPallina "2..*" -- "1" ThScatola : contiene >
+
+
+
+
+
+@enduml
