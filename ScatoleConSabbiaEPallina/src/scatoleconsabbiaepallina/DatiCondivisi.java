@@ -17,7 +17,8 @@ public class DatiCondivisi {
     private float inclinazioneX;//Attributo contenente il valore dell'inclinazione
     private final boolean running;//Attributo che indica lo stato di funzionamento del programma
     private Pallina p;//Attributo che contiene la pallina
-    
+    private float minX;//Attributo che contiene il valore minimo dell'inclinazione
+    private float maxX;//Attributo che contiene il valore massimo dell'inclinazione
     /**
      * @author Mattia
      * Costruttore che imposta il valore running a true
@@ -74,5 +75,24 @@ public class DatiCondivisi {
     public synchronized void setP(Pallina p) {
         this.p = p;
     }
+    
+    public synchronized void setMinX(float minX) {
+        this.minX=minX;
+    }
+    
+      public synchronized void setMaxX(float maxX) {
+        this.maxX=maxX;
+    }
+      
+      public synchronized float getMinX() {
+        return minX;
+    }
+         public synchronized float getMaxX() {
+        return maxX;
+    }
+      
+    
+    
+    
 
 }
