@@ -44,7 +44,7 @@ public class Sabbia extends PApplet  {
         this.posX = posX;
         this.posY = posY;
         this.dati = dati;
-        img = loadImage("sabbia.jpg");
+        //img = loadImage("sabbia.jpg");
         
     }
     

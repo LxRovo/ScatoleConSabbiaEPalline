@@ -39,7 +39,11 @@ public class ThScatola extends Thread {
       while(true){
       
           sabbia.aggiornaInfo();
-      
+          try {
+              Thread.sleep(10);
+          } catch (InterruptedException ex) {
+              Logger.getLogger(ThScatola.class.getName()).log(Level.SEVERE, null, ex);
+          }
       }
     }
 
