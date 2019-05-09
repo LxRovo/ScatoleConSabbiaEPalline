@@ -1,0 +1,117 @@
+@startuml
+class ThScatola
+class Sabbia
+class Pallina
+class SwingGui
+class DatiCondivisi
+class ScatoleConSabbiaEPallina
+
+' Attributo contenente il valore dell'altezza di una scatola
+ThScatola : altezza
+' Attributo contenente il valore della larghezza di una scatola
+ThScatola : larghezza
+' Attributo contenente il valore della lunghezza di una scatola
+ThScatola : lunghezza
+' Attributo contenente l'oggetto sabbia presente in ciascuna scatola
+ThScatola : sabbia[]
+' Posizione asse x scatola
+ThScatola : x
+' Posizione asse y scatola
+ThScatola : y
+
+' Metodo per rendere visibili le scatole
+ThScatola : run()
+
+
+' Attributo contenente il valore del volume della sabbia
+Sabbia : volume
+' Attributo contenente il valore dell'accellerazione della pallina quando le scatole vengono inclinate
+Sabbia : accellerazione
+' Attributo contenente il valore della posizione sull'asse x
+Sabbia : posX
+' Attributo contenente il valore della posizione sull'asse x
+Sabbia : posY
+' Metodo per modificare la velocità di spostamento della sabbia in base all'inclinazione
+Sabbia : aggiornaInfo()
+
+
+' Attributo contenente la posizione sull'asse delle x della pallina
+Pallina : xpos
+' Attributo contenente la posizione sull'asse delle y della pallina
+Pallina : ypos
+' Attributo contenente il raggio della pallina
+Pallina : rag
+' Puntatore alla classe DatiCondivisi
+Pallina : ptrDati
+' Metodo per modificare la velocità di spostamento della pallina 
+Pallina : aggiornaInfo()
+
+
+'Puntatore alla classe DatiCondivisi
+SwingGui : ptrDati
+'Attributo che rappresenta il frame su cui vi saranno lo slider e il pulsante
+SwingGui : frame
+'valore minimo che lo slider può avere
+SwingGui : VAL_MIN
+'valore massimo che lo slider può avere
+SwingGui : VAL_MAX
+'valore iniziale adottato dallo slider
+SwingGui : VAL_INIT
+'Metodo che rende visibile il frame
+SwingGui : show()
+
+
+'Attributo che permette di impostare il numero di scatole presenti
+DatiCondivisi : scatole[][]
+'Attributo contenente l'inclinazione del sensore rispetto all'asse delle x
+DatiCondivisi : inclinazioneX
+'Attributo che indica lo stato di funzionamento del programma
+DatiCondivisi : running
+'Attributo che contiene la palline
+DatiCondivisi : palline[]
+'Attributo che contiene il valore minimo dell'inclinazione sull'asse X
+DatiCondivisi : minX
+'Attributo che contiene il valore massimo dell'inclinazione sull'asse X
+DatiCondivisi : maxX
+
+'Metodo che permette di azzerare il valore dell'inclinazione delle scatole
+DatiCondivisi : resetInc()
+'Metodo che permette di controllare lo stato di funzionamento del programma
+DatiCondivisi : isRunning()
+
+'Rappresenta il numero di scatole
+ScatoleConSabbiaEPallina : scatole[][]
+'Rappresenta la larghezza delle scatole
+ScatoleConSabbiaEPallina : larghezza
+'Rappresenta la lunghezza delle scatole
+ScatoleConSabbiaEPallina : lunghezza
+'Rappresenta la posizione iniziale sull'asse x dele scatole
+ScatoleConSabbiaEPallina : x
+'Rappresenta la posizione iniziale sull'asse y dele scatole
+ScatoleConSabbiaEPallina : y
+'Metodo che permette di assegnare le impostazioni al frame
+ScatoleConSabbiaEPallina : settings()
+'Metodo che permette di disegnare sullo schermo il frame
+ScatoleConSabbiaEPallina : draw()
+'Metodo che permette di disegnare le scatole sul frame
+ScatoleConSabbiaEPallina : disegnaThScatola()
+'Metodo che permette di disegnare le palline sul frame
+ScatoleConSabbiaEPallina : disegnaPalline()
+'Metodo che permette di disegnare tutti i "blocchi" di sabbia sul frame
+ScatoleConSabbiaEPallina : disegnaSabbia()
+
+SwingGui "1" -- "2..*" ThScatola : aggiorna inclinazione >
+
+ThScatola "2..*" o-- "1" Pallina : contiene >
+ThScatola "2..*" o-- "1" Sabbia : contiene >
+
+ThScatola "2..*" -- "1" DatiCondivisi
+
+ScatoleConSabbiaEPallina "1" -- "2..*" ThScatola
+ScatoleConSabbiaEPallina "1" -- "2..*" SwingGui
+ScatoleConSabbiaEPallina "1" -- "2..*" DatiCondivisi
+ScatoleConSabbiaEPallina "1" -- "2..*" Sabbia
+ScatoleConSabbiaEPallina "1" -- "2..*" Pallina
+
+
+@enduml
