@@ -48,9 +48,7 @@ public class Sabbia extends PApplet  {
         
     }
     
-    public void settings() {
-  size(70, 100);
-      }
+    
     public float getVolume() {
         return volume;
     }
