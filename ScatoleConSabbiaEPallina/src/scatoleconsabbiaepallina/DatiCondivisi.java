@@ -16,12 +16,12 @@ public class DatiCondivisi {
     private Vector<ThScatola> scatole; //Vettore contenente le scatole
     private float inclinazioneX;//Attributo contenente il valore dell'inclinazione
     private final boolean running;//Attributo che indica lo stato di funzionamento del programma
-    private Pallina p;//Attributo che contiene la pallina
-    private float minX;//Attributo che contiene il valore minimo dell'inclinazione
-    private float maxX;//Attributo che contiene il valore massimo dell'inclinazione
+    private Pallina p;//Attributo contenente la pallina
+    private float minX;//Attributo contenente il valore minimo dell'inclinazione
+    private float maxX;//Attributo contenente il valore massimo dell'inclinazione
     /**
      * @author Mattia
-     * Costruttore che imposta il valore running a true
+     * @brief Costruttore che imposta il valore running a true
      */
      public DatiCondivisi() {
         this.running = true;
@@ -37,7 +37,7 @@ public class DatiCondivisi {
     
     /**
      * @author Mattia
-     * Metodo per impostare a 0 l'inclinazione delle scatole
+     * @brief Metodo per impostare a 0 l'inclinazione delle scatole
      */
     public void resetInc() {
         inclinazioneX = 0;
@@ -49,7 +49,7 @@ public class DatiCondivisi {
     
     /**
      * @author Mattia
-     * Metodo per controllare lo stato del programma
+     * @brief Metodo per controllare lo stato del programma
      * @return running
      */
     public boolean isRunning() {
