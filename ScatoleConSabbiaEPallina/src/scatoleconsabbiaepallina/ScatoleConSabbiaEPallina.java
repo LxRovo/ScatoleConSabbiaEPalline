@@ -7,7 +7,6 @@ package scatoleconsabbiaepallina;
 
 import java.util.Random;
 import processing.core.PApplet;
-import processing.core.PImage;
 
 /**
  *
@@ -152,7 +151,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         noStroke();
         fill(204, 102, 0);
 
-        Image(sabbia.getImg(), sabbia.getPosX(), sabbia.getPosY());
+        image(sabbia.getImg(), sabbia.getPosX(), sabbia.getPosY());
 
     }
 
