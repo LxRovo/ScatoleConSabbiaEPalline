@@ -30,19 +30,19 @@ public class Sabbia extends PApplet  {
      * 
      * 
      * 
-     * @param1 volume 
-     * @param2 posX
-     * @param3 posY
-     * @param4 dati
-     * @param5 s
+     * @param volume 
+     * @param posX
+     * @param posY
+     * @param dati
+     * 
      */
-    public Sabbia(float volume, float posX, float posY, DatiCondivisi dati, ThScatola s) {
+    public Sabbia(float volume, float posX, float posY, DatiCondivisi dati) {
         this.volume = volume;
         this.accellerazione = 0;
         this.posX = posX;
         this.posY = posY;
         this.dati = dati;
-        size((int) s.getLarghezza(),(int)s.getLunghezza());
+        size((int) dati.getThScatola(0, 0).getLarghezza(),(int)dati.getThScatola(0, 0).getLunghezza());
         img = loadImage("sabbia.jpg");
     }
     
