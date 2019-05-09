@@ -7,11 +7,14 @@ package scatoleconsabbiaepallina;
 
 import java.util.Random;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  *
  * @author rovelli_andrea
  */
+
+
 public class ScatoleConSabbiaEPallina extends PApplet {
 
     static DatiCondivisi dati;
