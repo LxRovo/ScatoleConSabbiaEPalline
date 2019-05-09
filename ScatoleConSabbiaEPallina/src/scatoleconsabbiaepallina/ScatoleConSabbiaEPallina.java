@@ -106,7 +106,6 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         for (int i = 0; i < dati.getNumRows(); i++) {
             for (int j = 0; j < dati.getNumCols(); j++) {
                 dati.getThScatola(i, j).start();
-                dati.getThScatola(i, j).getSabbia().setImage();
             }
 
         }
@@ -197,10 +196,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
      */
     public void disegnaSabbia(Sabbia sabbia) {
 
-        noStroke();
-        fill(204, 102, 0);
-
-        image(sabbia.getImg(), sabbia.getPosX(), sabbia.getPosY());
+        image(sabbia.getImg(), sabbia.getPosX(), sabbia.getPosY(), dati.getThScatola(0, 0).getLarghezza(), dati.getThScatola(0, 0).getLunghezza());
 
     }
 
