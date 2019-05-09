@@ -34,6 +34,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         cols = r.nextInt(3) + 2;
         numScatole = rows * cols;
 
+        
         /**
          * @author rovelli_andrea creazione e inizializzazione dei thread
          * scatola, della sabbia e della pallina
@@ -64,7 +65,6 @@ public class ScatoleConSabbiaEPallina extends PApplet {
                 scatole[i][j] = scatola;
 
                 dati.setScatole(scatole);
-                scatola.getSabbia().setSize();
 
                 if (i == rows / 2 && j == cols / 2) {
                     Pallina p = new Pallina(10, x + scatola.getLarghezza() / 2, scatola.getY() + scatola.getLunghezza() / 2);
@@ -78,9 +78,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
                 }
             }
         }
-
-        
-
+        dati.setNumRows(rows);
+        dati.setNumCols(cols);
         /*
         *@author rovelli_andrea
         *avvio della canvas e della swing
@@ -107,14 +106,15 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         for (int i = 0; i < dati.getNumRows(); i++) {
             for (int j = 0; j < dati.getNumCols(); j++) {
                 dati.getThScatola(i, j).start();
+                dati.getThScatola(i, j).getSabbia().setImage();
             }
 
         }
     }
 
     /**
-     * @author rovelli_andrea disegno nella canvas delle scatola, della sabbia e
-     * della pallina
+     * @author rovelli_andrea
+     * @brief disegno nella canvas delle scatola, della sabbia e della pallina
      *
      *
      */
@@ -190,11 +190,11 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     /**
      * @author rovelli_andrea
      *
-     * @brief metodo che permette di caricare l'immagine della sabbia in una scatola
- 
+     * @brief metodo che permette di caricare l'immagine della sabbia in una
+     * scatola
+     *
      * @param sabbia sabbia contenuta nella scatola
      */
-    
     public void disegnaSabbia(Sabbia sabbia) {
 
         noStroke();

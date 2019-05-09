@@ -100,6 +100,14 @@ public class DatiCondivisi {
         return numCols;
     }
 
+    public void setNumRows(int numRows) {
+        this.numRows = numRows;
+    }
+
+    public void setNumCols(int numCols) {
+        this.numCols = numCols;
+    }
+
  
     
          
