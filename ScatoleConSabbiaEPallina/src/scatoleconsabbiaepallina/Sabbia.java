@@ -5,38 +5,57 @@ import processing.core.PImage;
 import processing.core.PApplet;
 import java.lang.*;
 /**
- *
- * @author alessandro_purita
+ @author  alessandro_purita
+ 
+ */
+/**
+Cl asse per gestire la visualizzazione della sabbia ottenendo la sua posizione tramite l'accelerazione, interagisce con la classe ThScatola 
+* * per ottenere le coordinate e con DatiCondivisi per avere l'inclinazione 
  */
 public class Sabbia extends PApplet  {
     
-    private float volume;
-    private float accellerazione;
-    private float posX;
-    private float posY;
+    private float volume; //spazio occupato dalla sabbia
+    private float accellerazione; //variazione velocità sabbia
+    private float posX; //posizione sull'asse x 
+    private float posY; //posizione sull'asse y
+    DatiCondivisi dati; //puntatore alla classe DatiCondivisi 
+    PImage img; //immagine della sabbia
 
     
+/**
+     @brief Costruttore con parametri della classe
 
-    
-   
-    DatiCondivisi dati;
-
-    public Sabbia(float volume, float posX, float posY, DatiCondivisi dati) {
+      costruttore che inizializza la posizione x e y della sabbia passandola come parametro, l'immagine con le dimensioni rispettive
+      * e il volume passate dalla classe ThScatola 
+     * 
+     * 
+     * 
+     * @param1 volume 
+     * @param2 posX
+     * @param3 posY
+     * @param4 dati
+     * @param5 s
+     */
+    public Sabbia(float volume, float posX, float posY, DatiCondivisi dati, ThScatola s) {
         this.volume = volume;
         this.accellerazione = 0;
         this.posX = posX;
         this.posY = posY;
-        
         this.dati = dati;
+        size((int) s.getLarghezza(),(int)s.getLunghezza());
+        img = loadImage("sabbia.jpg");
     }
-public float getVolume() {
+    
+    public float getVolume() {
         return volume;
     }
 
     public float getAccellerazione() {
         return accellerazione;
     }
-
+    public PImage getImg() {
+        return img;
+    }
     public float getPosX() {
         return posX;
     }
@@ -62,7 +81,12 @@ public float getVolume() {
     
       
     
-
+/**
+ * @brief metodo per aggiornare la posizione sull'asse x della sabbia
+ * 
+ * La posizione in x viene calcolata in base all'accelerazione e se la nuova posizione è minore della x minima diviene quella, analogamente con la x massima
+     * 
+     */
     public void aggiornaInfo()
     {
     double x = Math.toRadians(dati.getInclinazioneX());   
