@@ -63,7 +63,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
                 ThScatola scatola = new ThScatola(altezza, x + (i * larghezza), y + (j * lunghezza), lunghezza, larghezza, sabbia, dati);
                 scatole[i][j] = scatola;
 
-                scatola.getSabbia().setSize(scatola);
+                dati.setScatole(scatole);
+                scatola.getSabbia().setSize();
 
                 if (i == rows / 2 && j == cols / 2) {
                     Pallina p = new Pallina(10, x + scatola.getLarghezza() / 2, scatola.getY() + scatola.getLunghezza() / 2);
@@ -78,7 +79,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             }
         }
 
-        dati.setScatole(scatole);
+        
 
         /*
         *@author rovelli_andrea
