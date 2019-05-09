@@ -36,7 +36,11 @@ public class ThScatola extends Thread {
 
     @Override
     public void run() {
+      while(true){
       
+          sabbia.aggiornaInfo();
+      
+      }
     }
 
     public float getAltezza() {

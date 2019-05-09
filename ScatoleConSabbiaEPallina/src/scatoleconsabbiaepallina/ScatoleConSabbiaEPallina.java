@@ -6,7 +6,6 @@
 package scatoleconsabbiaepallina;
 
 import java.util.Random;
-import java.util.Vector;
 import processing.core.PApplet;
 
 /**
@@ -16,6 +15,8 @@ import processing.core.PApplet;
 public class ScatoleConSabbiaEPallina extends PApplet {
 
     static DatiCondivisi dati;
+    static int rows;
+    static int cols;
     static int numScatole;
 
     /**
@@ -26,37 +27,48 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         Random r = new Random();
 
-        numScatole = r.nextInt(3)+2;
+        rows = r.nextInt(3) + 2;
+        cols = r.nextInt(3) + 2;
+        numScatole = rows * cols;
 
-        Vector<ThScatola> scatole = new Vector(numScatole);
+        ThScatola[][] scatole = new ThScatola[rows][cols];
         float larghezza = 70;
         float lunghezza = 100;
         float x = 50;
         float y = 50;
         dati = new DatiCondivisi();
-        for (int i = 0; i < numScatole; i++) {
-            float altezza = r.nextInt(20) + 30;
-            Sabbia sabbia;
-            if (i <= numScatole / 2) {
+        dati.setMinX(x);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
 
-                sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x, y, dati);
+                float altezza = r.nextInt(20) + 30;
+                Sabbia sabbia;
+                if (j == 0) {
 
-            } else {
+                    sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x + (i * larghezza), y + (j * lunghezza), dati);
 
-                sabbia = new Sabbia(0, x, y, dati);
+                } else {
 
+                    sabbia = new Sabbia(0, x, y, dati);
+
+                }
+                ThScatola scatola = new ThScatola(altezza, x + (i * larghezza), y + (j * lunghezza), lunghezza, larghezza, sabbia, dati);
+                scatole[i][j] = scatola;
+                if (i == rows / 2 && j == cols / 2) {
+                    Pallina p = new Pallina(10, x + scatola.getLarghezza() / 2, scatola.getY() + scatola.getLunghezza() / 2);
+                    dati.setP(p);
+
+                }
+                if (i == rows - 1 && j == cols - 1) {
+
+                    dati.setMaxX(x + (i * lunghezza));
+
+
+                }
             }
-            ThScatola scatola = new ThScatola(altezza, x + (i * larghezza), y, lunghezza, larghezza, sabbia, dati);
-            scatole.add(i, scatola);
-            if (i == (numScatole / 2)) {
-                Pallina p = new Pallina(10, x + scatola.getLarghezza() / 2, scatola.getY() + scatola.getLunghezza() / 2);
-                dati.setP(p);
-            }
-
         }
 
         dati.setScatole(scatole);
-
         PApplet.main(new String[]{"scatoleconsabbiaepallina.ScatoleConSabbiaEPallina"});
 
         SwingGui swing = new SwingGui(dati);
@@ -69,8 +81,11 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void settings() {
 
         size(640, 360);
-        for (int i = 0; i < dati.getScatole().size(); i++) {
-            dati.getThScatola(i).start();
+        for (int i = 0; i < dati.getNumRows(); i++) {
+            for (int j = 0; j < dati.getNumCols(); j++) {
+                dati.getThScatola(i, j).start();
+            }
+
         }
     }
 
@@ -85,15 +100,17 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         background(255, 255, 255);
 
         // display all "balls"
-        for (int i = 0; i < numScatole; i++) {
-            disegnaThScatola(i);
+        for (int i = 0; i < dati.getNumRows(); i++) {
+            for (int j = 0; j < dati.getNumCols(); j++) {
+                disegnaThScatola(i, j);
+            }
         }
 
     }
 
-    public void disegnaThScatola(int i) {
+    public void disegnaThScatola(int i, int j) {
 
-        ThScatola s = dati.getThScatola(i);
+        ThScatola s = dati.getThScatola(i, j);
         stroke(0, 0, 0);
         noFill();
 
@@ -112,10 +129,10 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             line(s.getX(), s.getY() + s.getLunghezza() / 2 - s.getRaggioFinestre(), s.getX(), s.getY() + s.getLunghezza() / 2 + s.getRaggioFinestre());
         }
         s.getSabbia().aggiornaInfo();
-        disegnaSabbia(s.getLarghezza(),s.getLunghezza(),s.getSabbia());
+        disegnaSabbia(s.getLarghezza(), s.getLunghezza(), s.getSabbia());
         //disegna pallina
         disegnaPallina(s);
-        
+
     }
 
     public void disegnaPallina(ThScatola s) {
@@ -128,10 +145,10 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     }
 
     public void disegnaSabbia(float larghezza, float lunghezza, Sabbia sabbia) {
-        
+
         noStroke();
         fill(204, 102, 0);
-        
+
         rect(sabbia.getPosX(), sabbia.getPosY(), larghezza, lunghezza);
 
     }
