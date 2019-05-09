@@ -13,12 +13,17 @@ import java.util.Vector;
  */
 public class DatiCondivisi {
 
-    private Vector<ThScatola> scatole; //Vettore contenente le scatole
+    private int numRows;//Attributo contenente il numero di righe della matrice
+    private int numCols;//Attributo contenente il numero di colonne della matrice
+    private ThScatola [][] scatole;//Attributo che permette di impostare il numero di scatole presenti
     private float inclinazioneX;//Attributo contenente il valore dell'inclinazione
     private final boolean running;//Attributo che indica lo stato di funzionamento del programma
     private Pallina p;//Attributo contenente la pallina
-    private float minX;//Attributo contenente il valore minimo dell'inclinazione
-    private float maxX;//Attributo contenente il valore massimo dell'inclinazione
+    private float minX;//Attributo contenente il valore minimo dove la sabbia può andare sull'asse X
+    private float maxX;//Attributo contenente il valore massimo dove la sabbia può andare sull'asse X
+    
+    
+    
     /**
      * @author Mattia
      * @brief Costruttore che imposta il valore running a true
@@ -29,10 +34,6 @@ public class DatiCondivisi {
 
     public synchronized void setValoreInc(int v) {
         inclinazioneX = v;
-    }
-    
-    public synchronized Vector<ThScatola> getScatole(){
-        return scatole;
     }
     
     /**
@@ -56,15 +57,15 @@ public class DatiCondivisi {
         return running;
     }
 
-    public synchronized ThScatola getThScatola(int index) {
-        return scatole.get(index);
+    public synchronized ThScatola getThScatola(int i, int j) {
+        return scatole [i][j];
     }
 
     public synchronized void setInclinazione(float inclinazione) {
         this.inclinazioneX = inclinazione;
     }
 
-    public synchronized void setScatole(Vector<ThScatola> scatole) {
+    public void setScatole(ThScatola[][] scatole) {
         this.scatole = scatole;
     }
 
@@ -90,7 +91,18 @@ public class DatiCondivisi {
          public synchronized float getMaxX() {
         return maxX;
     }
-      
+
+    public synchronized int getNumRows() {
+        return numRows;
+    }
+
+    public synchronized int getNumCols() {
+        return numCols;
+    }
+
+ 
+    
+         
     
     
     
