@@ -108,8 +108,8 @@ ThScatola "2..*" o-- "1" Sabbia : contiene >
 ThScatola "2..*" -- "1" DatiCondivisi
 
 ScatoleConSabbiaEPallina "1" -- "2..*" ThScatola
-ScatoleConSabbiaEPallina "1" -- "2..*" SwingGui
-ScatoleConSabbiaEPallina "1" -- "2..*" DatiCondivisi
+ScatoleConSabbiaEPallina "1" -- "1" SwingGui
+ScatoleConSabbiaEPallina "1" -- "1" DatiCondivisi
 ScatoleConSabbiaEPallina "1" -- "2..*" Sabbia
 ScatoleConSabbiaEPallina "1" -- "2..*" Pallina
 
