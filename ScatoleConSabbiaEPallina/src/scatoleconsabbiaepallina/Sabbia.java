@@ -44,13 +44,13 @@ public class Sabbia extends PApplet  {
         this.posX = posX;
         this.posY = posY;
         this.dati = dati;
-        
-        
-    }
-    public void setImage() {
-        size((int) dati.getThScatola(0, 0).getLarghezza(),(int)dati.getThScatola(0, 0).getLunghezza());
         img = loadImage("sabbia.jpg");
+        
     }
+    
+    public void settings() {
+  size(70, 100);
+      }
     public float getVolume() {
         return volume;
     }
