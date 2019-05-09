@@ -149,7 +149,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         noStroke();
         fill(204, 102, 0);
 
-        rect(sabbia.getPosX(), sabbia.getPosY(), larghezza, lunghezza);
+        Image(sabbia.getImg(), sabbia.getPosX(), sabbia.getPosY());
 
     }
 
