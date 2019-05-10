@@ -73,7 +73,8 @@ DatiCondivisi : palline[]
 DatiCondivisi : minX
 'Attributo che contiene il valore massimo dell'inclinazione sull'asse X
 DatiCondivisi : maxX
-
+'Semaforo per la sincronizzazzione tra lo SwingGui e la Pallina 
+DatiCondivisi : sem1
 'Metodo che permette di azzerare il valore dell'inclinazione delle scatole
 DatiCondivisi : resetInc()
 'Metodo che permette di controllare lo stato di funzionamento del programma
