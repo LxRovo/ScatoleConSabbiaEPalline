@@ -22,13 +22,19 @@ import javax.swing.event.ChangeListener;
  */
 public class SwingGui {
 
-    private DatiCondivisi ptrDati;
+    private DatiCondivisi ptrDati;/**puntatore alla classe DatiCondivisi */
     
-    private JFrame frame;
-    private final int VAL_MIN=-90;
-    private final int VAL_MAX=90;
-    private final int VAL_INIT=0;
+    private JFrame frame; /**rappresenta il frame su cui risiederanno lo slider e il pulsante di azzeramento */
+    private final int VAL_MIN=-90; /**indica il valore minimo dello slider */
+    private final int VAL_MAX=90; /**indica il valore massimo dello slider */
+    private final int VAL_INIT=0; /**indica il valore di inizializzazioone dello slider */
 
+    /**
+     * costruttore che inizializza il frame con uno slider, un pulsante di azzeramento e una label-contatore che
+     * tiene conto del valore attuale dello slider
+     * 
+     * @param ptrDati 
+     */
     public SwingGui(DatiCondivisi ptrDati) {
         this.ptrDati = ptrDati;
         frame = new JFrame("Controlli");
@@ -43,7 +49,6 @@ public class SwingGui {
             @Override
             public void stateChanged(ChangeEvent e) {
                 int valore = (int)inclinazione.getValue();
-                System.out.println(valore);
                 label.setText("valore corrente: "+valore);
                 ptrDati.setValoreInc(valore);
               
@@ -71,7 +76,9 @@ public class SwingGui {
                 
 
     }
-    
+    /**
+     * rende visibile il frame
+     */
     public void show() {
         frame.setVisible(true);
     }

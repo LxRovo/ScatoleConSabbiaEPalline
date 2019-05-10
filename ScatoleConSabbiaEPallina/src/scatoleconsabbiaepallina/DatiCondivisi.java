@@ -13,15 +13,20 @@ import java.util.Vector;
  */
 public class DatiCondivisi {
 
-    private Vector<ThScatola> scatole; //Vettore contenente le scatole
+    private int numRows;//Attributo contenente il numero di righe della matrice
+    private int numCols;//Attributo contenente il numero di colonne della matrice
+    private ThScatola [][] scatole;//Attributo che permette di impostare il numero di scatole presenti
     private float inclinazioneX;//Attributo contenente il valore dell'inclinazione
     private final boolean running;//Attributo che indica lo stato di funzionamento del programma
-    private Pallina p;//Attributo che contiene la pallina
-    private float minX;//Attributo che contiene il valore minimo dell'inclinazione
-    private float maxX;//Attributo che contiene il valore massimo dell'inclinazione
+    private Pallina p;//Attributo contenente la pallina
+    private float minX;//Attributo contenente il valore minimo dove la sabbia può andare sull'asse X
+    private float maxX;//Attributo contenente il valore massimo dove la sabbia può andare sull'asse X
+    
+    
+    
     /**
      * @author Mattia
-     * Costruttore che imposta il valore running a true
+     * @brief Costruttore che imposta il valore running a true
      */
      public DatiCondivisi() {
         this.running = true;
@@ -31,13 +36,9 @@ public class DatiCondivisi {
         inclinazioneX = v;
     }
     
-    public synchronized Vector<ThScatola> getScatole(){
-        return scatole;
-    }
-    
     /**
      * @author Mattia
-     * Metodo per impostare a 0 l'inclinazione delle scatole
+     * @brief Metodo per impostare a 0 l'inclinazione delle scatole
      */
     public void resetInc() {
         inclinazioneX = 0;
@@ -49,22 +50,22 @@ public class DatiCondivisi {
     
     /**
      * @author Mattia
-     * Metodo per controllare lo stato del programma
+     * @brief Metodo per controllare lo stato del programma
      * @return running
      */
     public boolean isRunning() {
         return running;
     }
 
-    public synchronized ThScatola getThScatola(int index) {
-        return scatole.get(index);
+    public synchronized ThScatola getThScatola(int i, int j) {
+        return scatole [i][j];
     }
 
     public synchronized void setInclinazione(float inclinazione) {
         this.inclinazioneX = inclinazione;
     }
 
-    public synchronized void setScatole(Vector<ThScatola> scatole) {
+    public void setScatole(ThScatola[][] scatole) {
         this.scatole = scatole;
     }
 
@@ -90,7 +91,28 @@ public class DatiCondivisi {
          public synchronized float getMaxX() {
         return maxX;
     }
-      
+
+    public synchronized int getNumRows() {
+        return numRows;
+    }
+
+    public synchronized int getNumCols() {
+        return numCols;
+    }
+
+    public void setNumRows(int numRows) {
+        this.numRows = numRows;
+    }
+
+    public void setNumCols(int numCols) {
+        this.numCols = numCols;
+    }
+
+    
+   
+ 
+    
+         
     
     
     

@@ -9,20 +9,22 @@ import static java.lang.Math.sin;
 
 /**
  *
- * @author peppe
+ * @author caliendo_giuseppe
  */
 public class Pallina {
-    private int rag;
-    private float xpos;
-    private float ypos;
-    private DatiCondivisi ptrdati;
+    private int rag;  /*indica il raggio della pallina*/
+    private float xpos;/*indica la posizione sull'asse x della pallina*/
+    private float ypos;/*indica la posizione sull'asse y della pallina*/
+    private DatiCondivisi ptrdati;/*puntatore alla classe DatiCondivisi*/
     
     public Pallina(int rag,float xpos,float ypos){
         this.rag= rag;
         this.xpos = xpos;
         this.ypos=ypos;
     }
-    
+    /**
+     * permette alla pallina di muoversi attraverso le scatole in base alla loro inclinazione
+     */
     public void aggiornaInformazioni(){
         xpos=xpos+(float)(9.8*sin(ptrdati.getInclinazioneX())); 
     }
