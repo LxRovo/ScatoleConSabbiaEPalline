@@ -25,7 +25,7 @@ public class DatiCondivisi {
     private float maxX;//Attributo contenente il valore massimo dove la sabbia può andare sull'asse X
     private Semaphore sem1;//Semaforo utilizzato per sincronizzare lo SwingGui e la Pallina
     private Sensore sens;//Sensore utilizzato per il movimento della sabbia e della pallina
-    private SwingGui swing;//Swing 
+    private SwingGui swing;//Swing utilizzata per la rappresentazione delle scatole e della pallina 
 
     /**
      * @author Mattia
