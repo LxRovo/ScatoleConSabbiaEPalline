@@ -6,6 +6,7 @@
 package scatoleconsabbiaepallina;
 
 import java.util.Vector;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -21,15 +22,17 @@ public class DatiCondivisi {
     private Pallina p;//Attributo contenente la pallina
     private float minX;//Attributo contenente il valore minimo dove la sabbia può andare sull'asse X
     private float maxX;//Attributo contenente il valore massimo dove la sabbia può andare sull'asse X
+    private Semaphore sem1;//Semaforo utilizzato per sincronizzare lo SwingGui e la Pallina
     
     
     
     /**
      * @author Mattia
-     * @brief Costruttore che imposta il valore running a true
+     * @brief Costruttore che imposta il valore running a true e il Semaforo a 0
      */
      public DatiCondivisi() {
         this.running = true;
+        sem1=new Semaphore (0);
     }
 
     public synchronized void setValoreInc(int v) {
