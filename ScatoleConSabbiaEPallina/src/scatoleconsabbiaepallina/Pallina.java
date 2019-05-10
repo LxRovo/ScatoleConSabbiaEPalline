@@ -12,29 +12,47 @@ import static java.lang.Math.sin;
  * @author caliendo_giuseppe
  */
 public class Pallina {
-    private int rag;  /*indica il raggio della pallina*/
+
+    private int rag;
+    /*indica il raggio della pallina*/
     private float xpos;/*indica la posizione sull'asse x della pallina*/
     private float ypos;/*indica la posizione sull'asse y della pallina*/
     private DatiCondivisi ptrdati;/*puntatore alla classe DatiCondivisi*/
-    
-    public Pallina(int rag,float xpos,float ypos){
-        this.rag= rag;
+    private float accellerazione;
+
+    public Pallina(int rag, float xpos, float ypos) {
+        this.rag = rag;
         this.xpos = xpos;
-        this.ypos=ypos;
+        this.ypos = ypos;
     }
+
     /**
-     * permette alla pallina di muoversi attraverso le scatole in base alla loro inclinazione
+     * permette alla pallina di muoversi attraverso le scatole in base alla loro
+     * inclinazione
      */
-    public void aggiornaInformazioni(){
-        xpos=xpos+(float)(9.8*sin(ptrdati.getInclinazioneX())); 
+    public void aggiornaInfo() {
+        double x = Math.toRadians(ptrdati.getInclinazioneX());
+        accellerazione = (float) (9.8 * Math.sin(x));
+        xpos = xpos + accellerazione;
+        if (xpos < ptrdati.getMinX()) {
+            xpos = ptrdati.getMinX();
+
+        }
+        if (xpos > ptrdati.getMaxX()) {
+            xpos = ptrdati.getMaxX();
+
+        }
+
     }
-    
+
     public float getXpos() {
         return xpos;
     }
+
     public float getYpos() {
         return ypos;
     }
+
     public float getRag() {
         return rag;
     }

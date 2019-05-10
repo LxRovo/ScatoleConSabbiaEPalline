@@ -28,6 +28,7 @@ public class SwingGui {
     private final int VAL_MIN=-90; /**indica il valore minimo dello slider */
     private final int VAL_MAX=90; /**indica il valore massimo dello slider */
     private final int VAL_INIT=0; /**indica il valore di inizializzazioone dello slider */
+    private int valore;
 
     /**
      * costruttore che inizializza il frame con uno slider, un pulsante di azzeramento e una label-contatore che
@@ -48,9 +49,13 @@ public class SwingGui {
         inclinazione.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                int valore = (int)inclinazione.getValue();
-                label.setText("valore corrente: "+valore);
-                ptrDati.setValoreInc(valore);
+                 valore = (int)inclinazione.getValue();
+                if(valore>5||valore<-5){
+                    ptrDati.signalSem1();
+                    label.setText("valore corrente: "+valore);
+                    
+                }
+                
               
             }         
         });
@@ -62,7 +67,10 @@ public class SwingGui {
             public void actionPerformed(ActionEvent e) {
                 inclinazione.setValue(0);
                 label.setText("valore corrente: 0");
-                ptrDati.setValoreInc(0);
+                
+                valore=0;
+                ptrDati.signalSem1();
+                
              
             }
         });
@@ -82,5 +90,10 @@ public class SwingGui {
     public void show() {
         frame.setVisible(true);
     }
+
+    public synchronized int getValore() {
+        return valore;
+    }
+    
 
 }
