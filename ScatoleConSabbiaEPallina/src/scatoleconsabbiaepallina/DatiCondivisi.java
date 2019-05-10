@@ -24,12 +24,13 @@ public class DatiCondivisi {
     private float minX;//Attributo contenente il valore minimo dove la sabbia può andare sull'asse X
     private float maxX;//Attributo contenente il valore massimo dove la sabbia può andare sull'asse X
     private Semaphore sem1;//Semaforo utilizzato per sincronizzare lo SwingGui e la Pallina
-    private Sensore sens;//
-    private SwingGui swing;
+    private Sensore sens;//Sensore utilizzato per il movimento della sabbia e della pallina
+    private SwingGui swing;//Swing 
 
     /**
      * @author Mattia
      * @brief Costruttore che imposta il valore running a true e il Semaforo a 0
+     * 
      */
     public DatiCondivisi() {
         this.running = true;
@@ -37,10 +38,7 @@ public class DatiCondivisi {
         sens = new Sensore();
     }
 
-    /**
-     * @author Mattia
-     * @brief Metodo per impostare a 0 l'inclinazione delle scatole
-     */
+    
     /**
      * @author Mattia
      * @brief Metodo per controllare lo stato del programma
