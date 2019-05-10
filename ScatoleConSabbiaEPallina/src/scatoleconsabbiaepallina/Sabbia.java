@@ -19,7 +19,7 @@ public class Sabbia extends PApplet  {
     private float posX; //posizione sull'asse x 
     private float posY; //posizione sull'asse y
     DatiCondivisi dati; //puntatore alla classe DatiCondivisi 
-    PImage img; //immagine della sabbia
+    
 
     
 
@@ -43,9 +43,7 @@ public class Sabbia extends PApplet  {
         this.accellerazione = 0;
         this.posX = posX;
         this.posY = posY;
-        this.dati = dati;
-        //img = loadImage("sabbia.jpg");
-        
+        this.dati = dati;        
     }
     
     
@@ -56,9 +54,7 @@ public class Sabbia extends PApplet  {
     public float getAccellerazione() {
         return accellerazione;
     }
-    public PImage getImg() {
-        return img;
-    }
+
     public float getPosX() {
         return posX;
     }

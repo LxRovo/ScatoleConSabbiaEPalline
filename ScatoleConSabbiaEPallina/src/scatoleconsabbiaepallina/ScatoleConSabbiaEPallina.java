@@ -7,6 +7,7 @@ package scatoleconsabbiaepallina;
 
 import java.util.Random;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  *
@@ -21,6 +22,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     static int rows;
     static int cols;
     static int numScatole;
+    static PImage img; //immagine della sabbia
 
     /**
      * @param args the command line arguments
@@ -108,8 +110,15 @@ public class ScatoleConSabbiaEPallina extends PApplet {
             }
 
         }
+        
     }
+    @Override
+   public void setup()
+   {
+           img = loadImage("src\\scatoleconsabbiaepallina\\sabbia.jpg");
 
+   
+   }
     /**
      * @author rovelli_andrea
      * @brief disegno nella canvas delle scatola, della sabbia e della pallina
@@ -199,8 +208,9 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         noStroke();
         fill(230, 140, 40);
-        rect(sabbia.getPosX(), sabbia.getPosY(), dati.getThScatola(0, 0).getLarghezza(), dati.getThScatola(0, 0).getLunghezza());
-        //image(sabbia.getImg(), sabbia.getPosX(), sabbia.getPosY(), dati.getThScatola(0, 0).getLarghezza(), dati.getThScatola(0, 0).getLunghezza());
+        
+        //rect(sabbia.getPosX(), sabbia.getPosY(), dati.getThScatola(0, 0).getLarghezza(), dati.getThScatola(0, 0).getLunghezza());
+        image(img, sabbia.getPosX(), sabbia.getPosY(), dati.getThScatola(0, 0).getLarghezza(), dati.getThScatola(0, 0).getLunghezza());
 
     }
 
