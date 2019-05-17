@@ -35,7 +35,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         rows = r.nextInt(1) + 2;
         cols = r.nextInt(2) + 2;
         numScatole = rows * cols;
-        
+
         /**
          * @author rovelli_andrea creazione e inizializzazione dei thread
          * scatola, della sabbia e della pallina
@@ -67,14 +67,14 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
                 dati.setScatole(scatole);
 
-                if (i == 0  && j == 0 ) {
+                if (i == 0 && j == 0) {
                     Pallina p = new Pallina(10, x + scatola.getLarghezza() / 2, scatola.getY() + scatola.getLunghezza() / 2);
                     dati.setP(p);
 
                 }
                 if (i == rows - 1 && j == cols - 1) {
 
-                    dati.setMaxX(x + (j* larghezza));
+                    dati.setMaxX(x + (j * larghezza));
 
                 }
             }
@@ -86,13 +86,14 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         *avvio della canvas e della swing
         *
          */
-        PApplet.main(new String[]{"scatoleconsabbiaepallina.ScatoleConSabbiaEPallina"});
 
         SwingGui swing = new SwingGui(dati);
         dati.setSwing(swing);
         dati.getSwing().show();
         ThSensore sens = new ThSensore(dati);
         dati.setSens(sens);
+
+        PApplet.main(new String[]{"scatoleconsabbiaepallina.ScatoleConSabbiaEPallina"});
 
     }
 
@@ -106,23 +107,22 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void settings() {
 
         size(640, 360);
-       
+
+    }
+
+    @Override
+    public void setup() {
+
+        dati.getSens().start();
         for (int i = 0; i < dati.getNumRows(); i++) {
             for (int j = 0; j < dati.getNumCols(); j++) {
                 dati.getThScatola(i, j).start();
             }
+            img = loadImage("src\\scatoleconsabbiaepallina\\sabbia.jpg");
 
         }
-        
     }
-    @Override
-   public void setup()
-   {
-           dati.getSens().start();
-           img = loadImage("src\\scatoleconsabbiaepallina\\sabbia.jpg");
 
-   
-   }
     /**
      * @author rovelli_andrea
      * @brief disegno nella canvas delle scatola, della sabbia e della pallina
@@ -159,11 +159,11 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void disegnaThScatola(int i, int j) {
 
         ThScatola s = dati.getThScatola(i, j);
-        
+
         disegnaSabbia(s.getSabbia());
         //disegna pallina
         disegnaPallina(s);
-        
+
         stroke(0, 0, 0);
         noFill();
 
@@ -195,7 +195,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         noStroke();
         fill(255, 0, 0);
         Pallina p = dati.getP();
-        
+
         ellipse(p.getXpos(), p.getYpos(), 10, 10);
 
     }
@@ -212,7 +212,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         noStroke();
         fill(230, 140, 40);
-        
+
         //rect(sabbia.getPosX(), sabbia.getPosY(), dati.getThScatola(0, 0).getLarghezza(), dati.getThScatola(0, 0).getLunghezza());
         image(img, sabbia.getPosX(), sabbia.getPosY(), dati.getThScatola(0, 0).getLarghezza(), dati.getThScatola(0, 0).getLunghezza());
 
