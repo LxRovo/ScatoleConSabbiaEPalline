@@ -90,7 +90,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         SwingGui swing = new SwingGui(dati);
         dati.setSwing(swing);
-        dati.getSwing.show();
+        dati.getSwing().show();
 
     }
 
