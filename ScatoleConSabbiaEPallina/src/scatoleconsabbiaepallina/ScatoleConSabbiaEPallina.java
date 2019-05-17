@@ -35,7 +35,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         rows = r.nextInt(1) + 2;
         cols = r.nextInt(2) + 2;
         numScatole = rows * cols;
-
+        
         /**
          * @author rovelli_andrea creazione e inizializzazione dei thread
          * scatola, della sabbia e della pallina
@@ -91,6 +91,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         SwingGui swing = new SwingGui(dati);
         dati.setSwing(swing);
         dati.getSwing().show();
+        ThSensore sens = new ThSensore(dati);
+        dati.setSens(sens);
 
     }
 
@@ -104,7 +106,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void settings() {
 
         size(640, 360);
-        dati.getSens().start();
+       
         for (int i = 0; i < dati.getNumRows(); i++) {
             for (int j = 0; j < dati.getNumCols(); j++) {
                 dati.getThScatola(i, j).start();
@@ -116,6 +118,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     @Override
    public void setup()
    {
+           dati.getSens().start();
            img = loadImage("src\\scatoleconsabbiaepallina\\sabbia.jpg");
 
    
