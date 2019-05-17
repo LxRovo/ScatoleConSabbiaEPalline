@@ -88,7 +88,7 @@ public class Sabbia extends PApplet  {
      */
     public void aggiornaInfo()
     {
-    double x = Math.toRadians(dati.getInclinazioneX());   
+    double x = Math.toRadians(dati.getSens().getInclinazioneX());   
     accellerazione = (float) (9.8 * Math.sin(x));
     posX= posX+accellerazione;
     if(posX<dati.getMinX())
