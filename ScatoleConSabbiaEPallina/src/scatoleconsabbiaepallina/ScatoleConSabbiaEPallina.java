@@ -104,6 +104,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void settings() {
 
         size(640, 360);
+        dati.getSens().start();
         for (int i = 0; i < dati.getNumRows(); i++) {
             for (int j = 0; j < dati.getNumCols(); j++) {
                 dati.getThScatola(i, j).start();
