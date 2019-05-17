@@ -9,7 +9,7 @@ package scatoleconsabbiaepallina;
  *
  * @author caliendo_giuseppe
  */
-public class Sensore extends Thread{
+public class ThSensore extends Thread{
     private float inclinazioneX;
     private DatiCondivisi ptrDati;
     
@@ -30,6 +30,12 @@ public class Sensore extends Thread{
     public synchronized void setInclinazione(float inclinazione) {
         this.inclinazioneX = inclinazione;
     }
+
+    public float getInclinazioneX() {
+        return inclinazioneX;
+    }
+    
+    
     
     public void resetInc() {
         inclinazioneX = 0;

@@ -24,7 +24,7 @@ public class DatiCondivisi {
     private float minX;//Attributo contenente il valore minimo dove la sabbia può andare sull'asse X
     private float maxX;//Attributo contenente il valore massimo dove la sabbia può andare sull'asse X
     private Semaphore sem1;//Semaforo utilizzato per sincronizzare lo SwingGui e la Pallina
-    private Sensore sens;//Sensore utilizzato per il movimento della sabbia e della pallina
+    private ThSensore sens;//Sensore utilizzato per il movimento della sabbia e della pallina
     private SwingGui swing;//Swing utilizzata per la rappresentazione delle scatole e della pallina 
 
     /**
@@ -35,7 +35,7 @@ public class DatiCondivisi {
     public DatiCondivisi() {
         this.running = true;
         sem1 = new Semaphore(0);
-        sens = new Sensore();
+        sens = new ThSensore();
     }
 
     
@@ -96,7 +96,7 @@ public class DatiCondivisi {
         this.numCols = numCols;
     }
 
-    public synchronized Sensore getSens() {
+    public synchronized ThSensore getSens() {
         return sens;
     }
 
