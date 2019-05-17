@@ -31,7 +31,7 @@ public class Pallina {
      * inclinazione
      */
     public void aggiornaInfo() {
-        double x = Math.toRadians(ptrdati.getInclinazioneX());
+        double x = Math.toRadians(ptrdati.getSens().getInclinazioneX());
         accellerazione = (float) (9.8 * Math.sin(x));
         xpos = xpos + accellerazione;
         if (xpos < ptrdati.getMinX()) {
