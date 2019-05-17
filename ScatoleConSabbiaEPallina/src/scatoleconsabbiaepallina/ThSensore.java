@@ -25,6 +25,7 @@ public class ThSensore extends Thread{
         
         while(true){
             
+            ptrDati.waitSem1();
             setInclinazione(ptrDati.getSwing().getValore());
                                 
         }

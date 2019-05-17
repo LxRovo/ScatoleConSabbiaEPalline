@@ -22,44 +22,60 @@ import javax.swing.event.ChangeListener;
  */
 public class SwingGui {
 
-    private DatiCondivisi ptrDati;/**puntatore alla classe DatiCondivisi */
-    
-    private JFrame frame; /**rappresenta il frame su cui risiederanno lo slider e il pulsante di azzeramento */
-    private final int VAL_MIN=-90; /**indica il valore minimo dello slider */
-    private final int VAL_MAX=90; /**indica il valore massimo dello slider */
-    private final int VAL_INIT=0; /**indica il valore di inizializzazioone dello slider */
+    private DatiCondivisi ptrDati;
+    /**
+     * puntatore alla classe DatiCondivisi
+     */
+
+    private JFrame frame;
+    /**
+     * rappresenta il frame su cui risiederanno lo slider e il pulsante di
+     * azzeramento
+     */
+    private final int VAL_MIN = -90;
+    /**
+     * indica il valore minimo dello slider
+     */
+    private final int VAL_MAX = 90;
+    /**
+     * indica il valore massimo dello slider
+     */
+    private final int VAL_INIT = 0;
+    /**
+     * indica il valore di inizializzazioone dello slider
+     */
     private int valore;
 
     /**
-     * costruttore che inizializza il frame con uno slider, un pulsante di azzeramento e una label-contatore che
-     * tiene conto del valore attuale dello slider
-     * 
-     * @param ptrDati 
+     * costruttore che inizializza il frame con uno slider, un pulsante di
+     * azzeramento e una label-contatore che tiene conto del valore attuale
+     * dello slider
+     *
+     * @param ptrDati
      */
     public SwingGui(DatiCondivisi ptrDati) {
         this.ptrDati = ptrDati;
         frame = new JFrame("Controlli");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             JLabel label=new JLabel("valore corrente: 0");
-             
+        JLabel label = new JLabel("valore corrente: 0");
+
         JPanel controls = new JPanel();  //aggiunge un pannello su cui aggiungere bottoni
         controls.setLayout(new FlowLayout());
 
-        JSlider inclinazione = new JSlider(JSlider.HORIZONTAL,VAL_MIN, VAL_MAX, VAL_INIT);  //slider che regola l'inclinazione delle scatole
+        JSlider inclinazione = new JSlider(JSlider.HORIZONTAL, VAL_MIN, VAL_MAX, VAL_INIT);  //slider che regola l'inclinazione delle scatole
         inclinazione.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                 valore = (int)inclinazione.getValue();
-                if(valore>5||valore<-5){
+                valore = (int) inclinazione.getValue();
+                label.setText("valore corrente: " + valore);
+                if (valore > 5 || valore < -5) {
                     ptrDati.signalSem1();
-                    label.setText("valore corrente: "+valore);
-                    
+
                 }
-                
-              
-            }         
+
+            }
         });
-        
+
         JButton resetBtn = new JButton("Azzera");
         resetBtn.addActionListener(new ActionListener() {
 
@@ -67,23 +83,22 @@ public class SwingGui {
             public void actionPerformed(ActionEvent e) {
                 inclinazione.setValue(0);
                 label.setText("valore corrente: 0");
-                
-                valore=0;
+
+                valore = 0;
                 ptrDati.signalSem1();
-                
-             
+
             }
         });
-        
+
         controls.add(inclinazione);
         controls.add(resetBtn);
         controls.add(label);
-        
+
         frame.add(controls);
         frame.setSize(400, 100);
-                
 
     }
+
     /**
      * rende visibile il frame
      */
@@ -94,6 +109,5 @@ public class SwingGui {
     public synchronized int getValore() {
         return valore;
     }
-    
 
 }
