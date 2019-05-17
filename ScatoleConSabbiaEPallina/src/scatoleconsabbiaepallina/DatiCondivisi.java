@@ -35,7 +35,6 @@ public class DatiCondivisi {
     public DatiCondivisi() {
         this.running = true;
         sem1 = new Semaphore(0);
-        sens = new ThSensore();
     }
 
     
@@ -126,6 +125,10 @@ public class DatiCondivisi {
 
     public void setSwing(SwingGui swing) {
         this.swing = swing;
+    }
+
+    public void setSens(ThSensore sens) {
+        this.sens = sens;
     }
 
     

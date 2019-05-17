@@ -12,15 +12,21 @@ package scatoleconsabbiaepallina;
 public class ThSensore extends Thread{
     private float inclinazioneX;
     private DatiCondivisi ptrDati;
+
+    public ThSensore(DatiCondivisi ptrDati) {
+        this.ptrDati = ptrDati;
+    }
+    
+    
     
     
     @Override
     public void run(){
         
         while(true){
-            ptrDati.waitSem1();
             
             setInclinazione(ptrDati.getSwing().getValore());
+                                
         }
         
     }
