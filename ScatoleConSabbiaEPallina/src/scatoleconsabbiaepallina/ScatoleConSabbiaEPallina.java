@@ -32,8 +32,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         Random r = new Random();
 
-        rows = r.nextInt(2) + 2;
-        cols = r.nextInt(2) + 2;
+        rows = r.nextInt(2) + 2; //numero di righe casuale compreso tra 2 a 3
+        cols = r.nextInt(2) + 2; //numero di colonne casuale compreso tra 2 a 3
         numScatole = rows * cols;
 
         /**
@@ -42,17 +42,21 @@ public class ScatoleConSabbiaEPallina extends PApplet {
          *
          */
         ThScatola[][] scatole = new ThScatola[rows][cols];
+
         float larghezza = 70;
         float lunghezza = 100;
-        float x = 50;
-        float y = 50;
+        float x = 50;   //posizione sulle asse delle x da dove disegnare la scatola
+        float y = 50;   //posizione sulle asse delle y da dove disegnare la scatola
+
         dati = new DatiCondivisi();
         dati.setMinX(x);
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
 
                 float altezza = r.nextInt(20) + 30;
                 Sabbia sabbia;
+
                 if (j == 0) {
 
                     sabbia = new Sabbia(altezza * larghezza * lunghezza / 2, x + (j * larghezza), y + (i * lunghezza), dati);
@@ -62,6 +66,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
                     sabbia = new Sabbia(0, x, y, dati);
 
                 }
+
                 ThScatola scatola = new ThScatola(altezza, x + (j * larghezza), y + (i * lunghezza), lunghezza, larghezza, sabbia, dati);
                 scatole[i][j] = scatola;
 
@@ -79,14 +84,14 @@ public class ScatoleConSabbiaEPallina extends PApplet {
                 }
             }
         }
+
         dati.setNumRows(rows);
         dati.setNumCols(cols);
-        /*
-        *@author rovelli_andrea
-        *avvio della canvas e della swing
-        *
-         */
 
+        /**
+         * @author rovelli_andrea avvio della canvas e della swing
+         *
+         */
         SwingGui swing = new SwingGui(dati);
         dati.setSwing(swing);
         dati.getSwing().show();
@@ -112,12 +117,17 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
     }
 
+    /**
+     * @author rovelli_andrea
+     *
+     * @brief avvio dei thread e caricamento dell'immagine della sabbia
+     */
     @Override
     public void setup() {
 
         dati.getSens().start();
         dati.getThPalla().start();
-                
+
         for (int i = 0; i < dati.getNumRows(); i++) {
             for (int j = 0; j < dati.getNumCols(); j++) {
                 dati.getThScatola(i, j).start();
@@ -129,8 +139,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
     /**
      * @author rovelli_andrea
+     * 
      * @brief disegno nella canvas delle scatola, della sabbia e della pallina
-     *
      *
      */
     @Override
