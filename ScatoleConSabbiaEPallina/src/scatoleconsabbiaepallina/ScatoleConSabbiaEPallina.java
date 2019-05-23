@@ -32,7 +32,7 @@ public class ScatoleConSabbiaEPallina extends PApplet {
 
         Random r = new Random();
 
-        rows = r.nextInt(1) + 2;
+        rows = r.nextInt(2) + 2;
         cols = r.nextInt(2) + 2;
         numScatole = rows * cols;
 
