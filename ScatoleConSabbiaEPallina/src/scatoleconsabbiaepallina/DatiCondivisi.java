@@ -20,7 +20,7 @@ public class DatiCondivisi {
     private int numCols;//Attributo contenente il numero di colonne della matrice
     private ThScatola[][] scatole;//Attributo che permette di impostare il numero di scatole presenti
     private final boolean running;//Attributo che indica lo stato di funzionamento del programma
-    private Pallina p;//Attributo contenente la pallina
+    private ThPalla p;//Attributo contenente la pallina
     private float minX;//Attributo contenente il valore minimo dove la sabbia può andare sull'asse X
     private float maxX;//Attributo contenente il valore massimo dove la sabbia può andare sull'asse X
     private Semaphore sem1;//Semaforo utilizzato per sincronizzare lo SwingGui e la Pallina
@@ -50,6 +50,10 @@ public class DatiCondivisi {
     public synchronized ThScatola getThScatola(int i, int j) {
         return scatole[i][j];
     }
+    
+    
+    
+    
 
     public void setScatole(ThScatola[][] scatole) {
         this.scatole = scatole;
@@ -98,6 +102,10 @@ public class DatiCondivisi {
     public synchronized ThSensore getSens() {
         return sens;
     }
+    
+    public  synchronized ThPalla getPalla(){
+        return p;
+    }
 
     public void signalSem1() {
         sem1.release();
@@ -127,9 +135,14 @@ public class DatiCondivisi {
         this.swing = swing;
     }
 
-    public void setSens(ThSensore sens) {
+    public synchronized void setSens(ThSensore sens) {
         this.sens = sens;
     }
+    
+    public synchronized void setPalla(ThPalla p) {
+        this.p = p;
+    }
+    
 
     
 }
