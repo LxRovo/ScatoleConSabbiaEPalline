@@ -12,16 +12,25 @@ import java.util.logging.Logger;
  *
  * @author peppe
  */
-public class ThPallina extends Thread{
-    private DatiCondivisi ptrDati;
-    
-    public ThPallina(DatiCondivisi dati){
-        ptrDati=dati;
+public class ThPallina extends Thread {
+
+    private DatiCondivisi ptrDati;  
+    /**
+     * puntatore alla classe DatiCondivisi
+     */
+
+
+    public ThPallina(DatiCondivisi dati) {
+        ptrDati = dati;
     }
-    
-    @Override 
-    public void run(){
-        while(true){
+
+    /**
+     * metodo per l'aggiornamento delle informazioni sul 
+     * movimento della pallina
+     */
+    @Override
+    public void run() {
+        while (true) {
             ptrDati.getP().aggiornaInfo();
             try {
                 Thread.sleep(10);
