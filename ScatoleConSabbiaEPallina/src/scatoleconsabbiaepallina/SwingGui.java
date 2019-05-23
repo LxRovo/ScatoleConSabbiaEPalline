@@ -71,6 +71,8 @@ public class SwingGui {
                 if (valore > 5 || valore < -5) {
                     ptrDati.signalSem1();
 
+                }else{
+                  ptrDati.getSens().setInclinazione(0);
                 }
 
             }
