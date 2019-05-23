@@ -1,18 +1,18 @@
 
 package scatoleconsabbiaepallina;
 
-import processing.core.PImage;
-import processing.core.PApplet;
-import java.lang.*;
+
+
+
 /**
  @author  alessandro_purita
  
  */
 /**
-Cl asse per gestire la visualizzazione della sabbia ottenendo la sua posizione tramite l'accelerazione, interagisce con la classe ThScatola 
+Classe per gestire la visualizzazione della sabbia ottenendo la sua posizione tramite l'accelerazione, interagisce con la classe ThScatola 
 * * per ottenere le coordinate e con DatiCondivisi per avere l'inclinazione 
  */
-public class Sabbia extends PApplet  {
+public class Sabbia   {
     
     private float volume; //spazio occupato dalla sabbia
     private float accellerazione; //variazione velocità sabbia
@@ -86,11 +86,28 @@ public class Sabbia extends PApplet  {
  * La posizione in x viene calcolata in base all'accelerazione e se la nuova posizione è minore della x minima diviene quella, analogamente con la x massima
      * 
      */
-    public void aggiornaInfo()
+    public void aggiornaInfo(float inclinazioneX,float larghezza)
     {
     double x = Math.toRadians(dati.getSens().getInclinazioneX());   
     accellerazione = (float) (9.8 * Math.sin(x));
     posX= posX+accellerazione;
+    if (inclinazioneX <= 15) 
+    {
+     posX= posX+accellerazione;
+    if(posX<dati.getMinX())
+    {
+    posX=dati.getMinX()+10;
+    
+    }
+    if(posX>dati.getMaxX())
+    {
+    posX=dati.getMaxX()-10;
+    
+    }
+    }
+    if (inclinazioneX >= 15) 
+    {
+        posX= posX+accellerazione;
     if(posX<dati.getMinX())
     {
     posX=dati.getMinX();
@@ -101,6 +118,9 @@ public class Sabbia extends PApplet  {
     posX=dati.getMaxX();
     
     }
+    }
+    
+    
         
     
     
