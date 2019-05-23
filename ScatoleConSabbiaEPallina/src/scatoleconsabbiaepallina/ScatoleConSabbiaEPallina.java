@@ -90,6 +90,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         SwingGui swing = new SwingGui(dati);
         dati.setSwing(swing);
         dati.getSwing().show();
+        ThPallina thPalla = new ThPallina(dati);
+        dati.setThPalla(thPalla);
         ThSensore sens = new ThSensore(dati);
         dati.setSens(sens);
 
@@ -114,6 +116,8 @@ public class ScatoleConSabbiaEPallina extends PApplet {
     public void setup() {
 
         dati.getSens().start();
+        dati.getThPalla().start();
+                
         for (int i = 0; i < dati.getNumRows(); i++) {
             for (int j = 0; j < dati.getNumCols(); j++) {
                 dati.getThScatola(i, j).start();
