@@ -38,7 +38,7 @@ public class ThScatola extends Thread {
     public void run() {
       while(true){
       
-          sabbia.aggiornaInfo();
+          sabbia.aggiornaInfo(larghezza);
           try {
               Thread.sleep(10);
           } catch (InterruptedException ex) {

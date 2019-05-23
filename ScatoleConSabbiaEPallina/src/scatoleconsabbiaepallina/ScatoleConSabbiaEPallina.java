@@ -95,10 +95,10 @@ public class ScatoleConSabbiaEPallina extends PApplet {
         SwingGui swing = new SwingGui(dati);
         dati.setSwing(swing);
         dati.getSwing().show();
-        ThPallina thPalla = new ThPallina(dati);
-        dati.setThPalla(thPalla);
         ThSensore sens = new ThSensore(dati);
         dati.setSens(sens);
+        ThPallina thPalla = new ThPallina(dati);
+        dati.setThPalla(thPalla);
 
         PApplet.main(new String[]{"scatoleconsabbiaepallina.ScatoleConSabbiaEPallina"});
 
