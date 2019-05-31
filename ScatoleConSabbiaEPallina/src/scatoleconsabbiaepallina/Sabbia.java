@@ -80,33 +80,21 @@ public class Sabbia {
      * massima
      *
      */
-    public void aggiornaInfo(float inclinazioneX, float larghezza) {
+    public void aggiornaInfo(float larghezza) {
         double x = Math.toRadians(dati.getSens().getInclinazioneX());
         accellerazione = (float) (9.8 * Math.sin(x));
         posX = posX + accellerazione;
-        if (inclinazioneX <= 15) {
-            posX = posX + accellerazione;
-            if (posX < dati.getMinX()) {
-                posX = dati.getMinX() + 10;
 
-            }
-            if (posX > dati.getMaxX()) {
-                posX = dati.getMaxX() - 10;
+        if (posX < dati.getMinX()) {
+            posX = dati.getMinX();
 
-            }
         }
-        if (inclinazioneX >= 15) {
-            posX = posX + accellerazione;
-            if (posX < dati.getMinX()) {
-                posX = dati.getMinX();
+        if (posX > dati.getMaxX()) {
+            posX = dati.getMaxX();
 
-            }
-            if (posX > dati.getMaxX()) {
-                posX = dati.getMaxX();
-
-            }
         }
-
     }
 
 }
+
+
